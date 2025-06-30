@@ -1,0 +1,14 @@
+﻿## Archivos a ignorar ##
+/bin/
+/obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+*.log
+TestResults/
+packages/
+appsettings.Development.json
+.env
+.DS_Store
