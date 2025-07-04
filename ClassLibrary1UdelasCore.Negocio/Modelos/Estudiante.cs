@@ -8,15 +8,15 @@ namespace UdelasCore.Negocio.Modelos
 
         [Required]
         [StringLength(100)]
-        public string Nombre { get; set; }
+        public required string Nombre { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string Apellido { get; set; }
+        public required string Apellido { get; set; }
 
         [Required]
         [StringLength(20)]
-        public string Carnet { get; set; }
+        public required string Carnet { get; set; }
 
         [EmailAddress]
         [StringLength(100)]

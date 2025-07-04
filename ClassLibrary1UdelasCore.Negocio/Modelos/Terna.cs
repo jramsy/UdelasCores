@@ -9,12 +9,12 @@ namespace UdelasCore.Negocio.Modelos
 
         [Required]
         [StringLength(20)]
-        public string Nombre { get; set; }
+        public required string Nombre { get; set; }
 
         public DateTime FechaCreacion { get; set; }
 
         [Required]
-        public string Estado { get; set; } // Activa, Inactiva, Finalizada
+        public required string Estado { get; set; } // Activa, Inactiva, Finalizada
 
         public string? Descripcion { get; set; }
 

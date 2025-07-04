@@ -8,11 +8,11 @@ namespace UdelasCore.Negocio.Modelos
 
         [Required]
         [StringLength(150)]
-        public string Nombre { get; set; }
+        public string? Nombre { get; set; }
 
         [Required]
         [StringLength(10)]
-        public string Codigo { get; set; }
+        public required string Codigo { get; set; }
 
         [Required]
         public int Creditos { get; set; }

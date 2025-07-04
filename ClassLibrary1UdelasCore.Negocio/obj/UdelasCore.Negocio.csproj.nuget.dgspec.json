@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jrams\\source\\repos\\Udelascore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {}
+    "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jrams\\source\\repos\\Udelascore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {
+    "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jrams\\source\\repos\\Udelascore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
+        "projectUniqueName": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
         "projectName": "UdelasCore.Negocio",
-        "projectPath": "C:\\Users\\jrams\\source\\repos\\Udelascore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
-        "packagesPath": "C:\\Users\\jrams\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jrams\\source\\repos\\Udelascore\\ClassLibrary1UdelasCore.Negocio\\obj\\",
+        "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
+        "packagesPath": "C:\\Users\\jarojas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jrams\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jarojas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,8 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet9/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -58,6 +57,10 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[9.0.6, )"
             }

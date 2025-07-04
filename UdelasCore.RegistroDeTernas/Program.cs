@@ -18,14 +18,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         }
     ));
 
-// Configuración de servicios MVC
-builder.Services.AddControllersWithViews();
-
-// Registrar servicios de dominio
-builder.Services.AddScoped<ITernaService, TernaService>();
+// Registro de servicios (solo una vez)
 builder.Services.AddScoped<IEstudianteService, EstudianteService>();
 builder.Services.AddScoped<IMateriaService, MateriaService>();
 builder.Services.AddScoped<IProfesorService, ProfesorService>();
+builder.Services.AddScoped<ITernaService, TernaService>();
+
+// Configuración de MVC
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
