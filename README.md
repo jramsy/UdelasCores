@@ -105,7 +105,7 @@ Contribuciones y mejoras son bienvenidas. 🚀
 
 --- 
 
-### **🎨 Ejemplo Visual (Opcional)**  
+### **🎨 Ejemplo Visual**  
 ```mermaid
 graph TD
     A[RegistroDeTernas MVC] --> B[ClassLibrary1UdelasCore.Negocio]
