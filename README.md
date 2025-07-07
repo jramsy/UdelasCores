@@ -122,6 +122,15 @@ Este `README.md` incluye:
 
 ## Implementación de la Segunda Base de Datos (Horarios)
 
+
+
+Aquí tienes un **README.md** profesional para tu repositorio Git, documentando la implementación de la segunda base de datos:
+
+```markdown
+# UdelasCore - Registro de Ternas
+
+## Implementación de la Segunda Base de Datos (Horarios)
+
 ### Estructura de la Base de Datos
 ```mermaid
 erDiagram
@@ -137,33 +146,34 @@ erDiagram
         datetime HoraFin
         int UsuarioId FK
     }
+```
 
-Configuración Técnica
-Contextos de Base de Datos
-HorariosDbContext (Nueva implementación)
+### Configuración Técnica
 
+#### Contextos de Base de Datos
+1. **HorariosDbContext** (Nueva implementación)
+   ```csharp
+   public class HorariosDbContext : DbContext
+   {
+       public DbSet<Usuarios> Usuarios { get; set; }
+       public DbSet<Turnos> Turnos { get; set; }
 
-public class HorariosDbContext : DbContext
-{
-    public DbSet<Usuarios> Usuarios { get; set; }
-    public DbSet<Turnos> Turnos { get; set; }
+       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+       {
+           optionsBuilder.UseSqlServer("Server=...;Database=Horarios;...");
+       }
+   }
+   ```
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("Server=...;Database=Horarios;...");
-    }
-}
-
-
-## Migraciones
-bash
+#### Migraciones
+```bash
 # Comandos ejecutados:
 dotnet ef migrations add InitHorariosSchema --context HorariosDbContext
 dotnet ef database update --context HorariosDbContext
+```
 
-
-
-
+### Flujo de Trabajo Git
+```mermaid
 gitGraph
     commit
     branch feature/horarios-db
@@ -172,19 +182,17 @@ gitGraph
     commit
     checkout main
     merge feature/horarios-db
+```
 
+### Requisitos
+- .NET 8.0
+- Entity Framework Core 8.x
+- SQL Server 2019+
 
+---
 
-Requisitos
-.NET 8.0
-
-Entity Framework Core 8.x
-
-SQL Server 2019+
-
-Nota: Este documento se actualiza automáticamente con cada merge a main.
-
-text
+**Nota**: Este documento se actualiza automáticamente con cada merge a `main`.
+```
 
 ### Características clave:
 1. **Diagrama ER interactivo** (usando Mermaid)
@@ -197,9 +205,4 @@ text
 - Problemas conocidos
 - Roadmap de implementación
 - Configuración de conexiones alternativas (MySQL, PostgreSQL)
-
-
-
-
-
 
