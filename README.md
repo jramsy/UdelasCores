@@ -117,3 +117,89 @@ Este `README.md` incluye:
 - Comandos para CLI y Package Manager Console.  
 - Estructura del proyecto.  
 - Solución de problemas comunes.  
+
+# UdelasCore - Registro de Ternas
+
+## Implementación de la Segunda Base de Datos (Horarios)
+
+### Estructura de la Base de Datos
+```mermaid
+erDiagram
+    USUARIOS ||--o{ TURNOS : "Tiene"
+    USUARIOS {
+        int UsuariosId PK
+        string Nombre
+        string Rol
+    }
+    TURNOS {
+        int TurnoId PK
+        datetime HoraInicio
+        datetime HoraFin
+        int UsuarioId FK
+    }
+
+Configuración Técnica
+Contextos de Base de Datos
+HorariosDbContext (Nueva implementación)
+
+
+public class HorariosDbContext : DbContext
+{
+    public DbSet<Usuarios> Usuarios { get; set; }
+    public DbSet<Turnos> Turnos { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Server=...;Database=Horarios;...");
+    }
+}
+
+
+## Migraciones
+bash
+# Comandos ejecutados:
+dotnet ef migrations add InitHorariosSchema --context HorariosDbContext
+dotnet ef database update --context HorariosDbContext
+
+
+
+
+gitGraph
+    commit
+    branch feature/horarios-db
+    checkout feature/horarios-db
+    commit
+    commit
+    checkout main
+    merge feature/horarios-db
+
+
+
+Requisitos
+.NET 8.0
+
+Entity Framework Core 8.x
+
+SQL Server 2019+
+
+Nota: Este documento se actualiza automáticamente con cada merge a main.
+
+text
+
+### Características clave:
+1. **Diagrama ER interactivo** (usando Mermaid)
+2. **Sintaxis resaltada** para código C#
+3. **Historial de comandos** exactos ejecutados
+4. **Visualización del flujo Git**
+5. **Responsive** (se ve bien en GitHub/GitLab)
+
+¿Necesitas que agregue alguna sección específica adicional? Por ejemplo:
+- Problemas conocidos
+- Roadmap de implementación
+- Configuración de conexiones alternativas (MySQL, PostgreSQL)
+
+
+
+
+
+
