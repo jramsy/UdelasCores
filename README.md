@@ -123,9 +123,6 @@ Este `README.md` incluye:
 ## Implementación de la Segunda Base de Datos (Horarios)
 
 
-
-Aquí tienes un **README.md** profesional para tu repositorio Git, documentando la implementación de la segunda base de datos:
-
 ```markdown
 # UdelasCore - Registro de Ternas
 
@@ -191,18 +188,4 @@ gitGraph
 
 ---
 
-**Nota**: Este documento se actualiza automáticamente con cada merge a `main`.
-```
-
-### Características clave:
-1. **Diagrama ER interactivo** (usando Mermaid)
-2. **Sintaxis resaltada** para código C#
-3. **Historial de comandos** exactos ejecutados
-4. **Visualización del flujo Git**
-5. **Responsive** (se ve bien en GitHub/GitLab)
-
-¿Necesitas que agregue alguna sección específica adicional? Por ejemplo:
-- Problemas conocidos
-- Roadmap de implementación
-- Configuración de conexiones alternativas (MySQL, PostgreSQL)
 
