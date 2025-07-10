@@ -1,4 +1,4 @@
-﻿using UdelasCore.Negocio.Modelos;
+﻿using UdelasCore.Negocio.Modelos.Modelo.Terna;
 
 namespace UdelasCore.Negocio.Servicios
 {

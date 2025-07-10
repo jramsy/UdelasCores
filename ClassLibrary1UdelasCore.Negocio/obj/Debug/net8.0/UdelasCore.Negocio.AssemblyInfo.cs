@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UdelasCore.Negocio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9fae6b4a8d4f236e7b753b764e5449f77d107b49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b04b4d3ae0e0c369a1c859362f0a1f14d953db7")]
 [assembly: System.Reflection.AssemblyProductAttribute("UdelasCore.Negocio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UdelasCore.Negocio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

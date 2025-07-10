@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace UdelasCore.Negocio.Modelos
+namespace UdelasCore.Negocio.Modelos.Modelo.Terna
 {
-    public class Profesor
+    public class Estudiante
     {
         public int Id { get; set; }
 
@@ -14,17 +14,20 @@ namespace UdelasCore.Negocio.Modelos
         [StringLength(100)]
         public required string Apellido { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        public required string Carnet { get; set; }
+
         [EmailAddress]
         [StringLength(100)]
         public string? Email { get; set; }
 
-        [StringLength(100)]
-        public string? Especialidad { get; set; }
+        public DateTime FechaNacimiento { get; set; }
 
         public string? Telefono { get; set; }
 
         // Relaciones
-        public virtual ICollection<Terna> Ternas { get; set; } = new List<Terna>();
-        public virtual ICollection<Materia> Materias { get; set; } = new List<Materia>();
+        public int? TernaId { get; set; }
+        public virtual Terna? Terna { get; set; }
     }
 }

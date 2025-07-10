@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using UdelasCore.Negocio.Modelos.Modelo.Terna;
 
 namespace UdelasCore.Negocio.Modelos
 {
