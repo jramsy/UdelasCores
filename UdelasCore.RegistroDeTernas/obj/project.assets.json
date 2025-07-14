@@ -1556,7 +1556,7 @@
           }
         }
       },
-      "ClassLibrary1UdelasCore.Negocio/1.0.0": {
+      "UdelasCore.Negocio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -1564,10 +1564,10 @@
           "Microsoft.Extensions.Configuration.Json": "9.0.6"
         },
         "compile": {
-          "bin/placeholder/ClassLibrary1UdelasCore.Negocio.dll": {}
+          "bin/placeholder/UdelasCore.Negocio.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ClassLibrary1UdelasCore.Negocio.dll": {}
+          "bin/placeholder/UdelasCore.Negocio.dll": {}
         }
       }
     }
@@ -4350,17 +4350,16 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "ClassLibrary1UdelasCore.Negocio/1.0.0": {
+    "UdelasCore.Negocio/1.0.0": {
       "type": "project",
-      "path": "../ClassLibrary1UdelasCore.Negocio/ClassLibrary1UdelasCore.Negocio.csproj",
-      "msbuildProject": "../ClassLibrary1UdelasCore.Negocio/ClassLibrary1UdelasCore.Negocio.csproj"
+      "path": "../ClassLibrary1UdelasCore.Negocio/UdelasCore.Negocio.csproj",
+      "msbuildProject": "../ClassLibrary1UdelasCore.Negocio/UdelasCore.Negocio.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Azure.Core >= 1.46.2",
       "Azure.Identity >= 1.14.1",
-      "ClassLibrary1UdelasCore.Negocio >= 1.0.0",
       "Microsoft.Bcl.AsyncInterfaces >= 9.0.6",
       "Microsoft.Bcl.Cryptography >= 9.0.6",
       "Microsoft.CSharp >= 4.7.0",
@@ -4403,7 +4402,8 @@
       "System.Security.Cryptography.ProtectedData >= 9.0.6",
       "System.Text.Encodings.Web >= 9.0.6",
       "System.Text.Json >= 9.0.6",
-      "System.Windows.Extensions >= 9.0.6"
+      "System.Windows.Extensions >= 9.0.6",
+      "UdelasCore.Negocio >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4438,8 +4438,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj": {
-              "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj"
+            "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {
+              "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj"
             }
           }
         }

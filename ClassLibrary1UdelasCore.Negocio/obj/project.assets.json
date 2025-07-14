@@ -5020,9 +5020,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj",
-      "projectName": "ClassLibrary1UdelasCore.Negocio",
-      "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj",
+      "projectUniqueName": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
+      "projectName": "UdelasCore.Negocio",
+      "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
       "packagesPath": "C:\\Users\\jarojas\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\obj\\",
       "projectStyle": "PackageReference",

@@ -4,12 +4,12 @@
     "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\UdelasCore.RegistroDeTernas\\UdelasCore.RegistroDeTernas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj": {
+    "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj",
-        "projectName": "ClassLibrary1UdelasCore.Negocio",
-        "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj",
+        "projectUniqueName": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
+        "projectName": "UdelasCore.Negocio",
+        "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
         "packagesPath": "C:\\Users\\jarojas\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\obj\\",
         "projectStyle": "PackageReference",
@@ -113,8 +113,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj": {
-                "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\ClassLibrary1UdelasCore.Negocio.csproj"
+              "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {
+                "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj"
               }
             }
           }

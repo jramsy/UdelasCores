@@ -58,7 +58,7 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ClassLibrary1UdelasCore.Negocio\ClassLibrary1UdelasCore.Negocio.csproj" />
+		<ProjectReference Include="..\ClassLibrary1UdelasCore.Negocio\UdelasCore.Negocio.csproj" />
 	</ItemGroup>
 
 </Project>
