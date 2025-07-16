@@ -6,9 +6,9 @@ namespace UdelasCore.Negocio.Servicios
 {
     public class ProfesorService : IProfesorService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly RHHDbContext _context;
 
-        public ProfesorService(ApplicationDbContext context)
+        public ProfesorService(RHHDbContext context)
         {
             _context = context;
         }

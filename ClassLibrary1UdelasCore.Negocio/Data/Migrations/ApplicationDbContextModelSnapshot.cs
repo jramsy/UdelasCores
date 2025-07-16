@@ -10,7 +10,7 @@ using UdelasCore.Negocio.Data;
 
 namespace ClassLibrary1UdelasCore.Negocio.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(RHHDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

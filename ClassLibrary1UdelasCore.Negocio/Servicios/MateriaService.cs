@@ -1,15 +1,15 @@
 ﻿// Archivo: UdelasCore.Negocio/Servicios/MateriaService.cs
 using Microsoft.EntityFrameworkCore;
 using UdelasCore.Negocio.Data;
-using UdelasCore.Negocio.Modelos;
+using UdelasCore.Negocio.Modelos.Modelo_Terna;
 
 namespace UdelasCore.Negocio.Servicios
 {
     public class MateriaService : IMateriaService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly RHHDbContext _context;
 
-        public MateriaService(ApplicationDbContext context)
+        public MateriaService(RHHDbContext context)
         {
             _context = context;
         }

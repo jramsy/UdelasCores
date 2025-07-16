@@ -3,9 +3,9 @@ using UdelasCore.Negocio.Data;
 
 public class TestController : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
+    private readonly RHHDbContext _context;
 
-    public TestController(ApplicationDbContext context)
+    public TestController(RHHDbContext context)
     {
         _context = context;
     }

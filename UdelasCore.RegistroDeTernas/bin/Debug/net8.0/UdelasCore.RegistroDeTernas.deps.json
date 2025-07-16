@@ -10,7 +10,6 @@
         "dependencies": {
           "Azure.Core": "1.46.2",
           "Azure.Identity": "1.14.1",
-          "ClassLibrary1UdelasCore.Negocio": "1.0.0",
           "Microsoft.Bcl.AsyncInterfaces": "9.0.6",
           "Microsoft.Bcl.Cryptography": "9.0.6",
           "Microsoft.CSharp": "4.7.0",
@@ -53,7 +52,8 @@
           "System.Security.Cryptography.ProtectedData": "9.0.6",
           "System.Text.Encodings.Web": "9.0.6",
           "System.Text.Json": "9.0.6",
-          "System.Windows.Extensions": "9.0.6"
+          "System.Windows.Extensions": "9.0.6",
+          "UdelasCore.Negocio": "1.0.0"
         },
         "runtime": {
           "UdelasCore.RegistroDeTernas.dll": {}
@@ -1109,13 +1109,13 @@
           }
         }
       },
-      "ClassLibrary1UdelasCore.Negocio/1.0.0": {
+      "UdelasCore.Negocio/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.6",
           "Microsoft.Extensions.Configuration.Json": "9.0.6"
         },
         "runtime": {
-          "ClassLibrary1UdelasCore.Negocio.dll": {
+          "UdelasCore.Negocio.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1640,7 +1640,7 @@
       "path": "system.windows.extensions/9.0.6",
       "hashPath": "system.windows.extensions.9.0.6.nupkg.sha512"
     },
-    "ClassLibrary1UdelasCore.Negocio/1.0.0": {
+    "UdelasCore.Negocio/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

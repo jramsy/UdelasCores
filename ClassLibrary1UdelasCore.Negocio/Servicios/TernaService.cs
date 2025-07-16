@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UdelasCore.Negocio.Data;
-using UdelasCore.Negocio.Modelos;
+using UdelasCore.Negocio.Modelos.Modelo_Terna;
 
 namespace UdelasCore.Negocio.Servicios
 {
     public class TernaService : ITernaService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly RHHDbContext _context;
 
-        public TernaService(ApplicationDbContext context)
+        public TernaService(RHHDbContext context)
         {
             _context = context;
         }

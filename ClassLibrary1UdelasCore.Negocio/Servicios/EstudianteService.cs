@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UdelasCore.Negocio.Data;
-using UdelasCore.Negocio.Modelos;
+using UdelasCore.Negocio.Modelos.Modelo_Terna;
 
 namespace UdelasCore.Negocio.Servicios
 {
     public class EstudianteService : IEstudianteService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly RHHDbContext _context;
 
-        public EstudianteService(ApplicationDbContext context)
+        public EstudianteService(RHHDbContext context)
         {
             _context = context;
         }

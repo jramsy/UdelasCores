@@ -11,7 +11,7 @@ using UdelasCore.Negocio.Data;
 
 namespace ClassLibrary1UdelasCore.Negocio.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(RHHDbContext))]
     [Migration("20250703200451_CrearTablasTernas")]
     partial class CrearTablasTernas
     {
