@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using UdelasCore.Negocio.Data;
+using UdelasCore.Negocio.Interfaces;
 using UdelasCore.Negocio.Modelos.Modelo_Horario;
 using UdelasCore.Negocio.Servicios;
 

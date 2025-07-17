@@ -4,11 +4,11 @@ using UdelasCore.RegistroDeTernas.Models;
 
 namespace UdelasCore.RegistroDeTernas.Controllers
 {
-    public class HomeController : Controller
+    public class RHHController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<RHHController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public RHHController(ILogger<RHHController> logger)
         {
             _logger = logger;
         }

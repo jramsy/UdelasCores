@@ -277,3 +277,4 @@ C:\Users\jarojas\source\repos\jramsy\UdelasCore\UdelasCore.RegistroDeTernas\bin\
 C:\Users\jarojas\source\repos\jramsy\UdelasCore\UdelasCore.RegistroDeTernas\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\jarojas\source\repos\jramsy\UdelasCore\UdelasCore.RegistroDeTernas\bin\Debug\net8.0\UdelasCore.Negocio.dll
 C:\Users\jarojas\source\repos\jramsy\UdelasCore\UdelasCore.RegistroDeTernas\bin\Debug\net8.0\UdelasCore.Negocio.pdb
+C:\Users\jarojas\source\repos\jramsy\UdelasCore\UdelasCore.RegistroDeTernas\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

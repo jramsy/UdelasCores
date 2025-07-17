@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UdelasCore.Negocio.Data;
+using UdelasCore.Negocio.Interfaces;
 using UdelasCore.Negocio.Modelos;
 
 namespace UdelasCore.Negocio.Servicios

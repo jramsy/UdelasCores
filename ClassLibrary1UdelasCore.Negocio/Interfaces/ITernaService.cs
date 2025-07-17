@@ -1,6 +1,6 @@
 ﻿using UdelasCore.Negocio.Modelos.Modelo_Terna;
 
-namespace UdelasCore.Negocio.Servicios
+namespace UdelasCore.Negocio.Interfaces
 {
     public interface ITernaService
     {

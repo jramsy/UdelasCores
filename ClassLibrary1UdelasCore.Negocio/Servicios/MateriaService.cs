@@ -1,6 +1,7 @@
 ﻿// Archivo: UdelasCore.Negocio/Servicios/MateriaService.cs
 using Microsoft.EntityFrameworkCore;
 using UdelasCore.Negocio.Data;
+using UdelasCore.Negocio.Interfaces;
 using UdelasCore.Negocio.Modelos.Modelo_Terna;
 
 namespace UdelasCore.Negocio.Servicios

@@ -1,6 +1,6 @@
 ﻿using UdelasCore.Negocio.Modelos;
 
-namespace UdelasCore.Negocio.Servicios
+namespace UdelasCore.Negocio.Interfaces
 {
     public interface IProfesorService
     {

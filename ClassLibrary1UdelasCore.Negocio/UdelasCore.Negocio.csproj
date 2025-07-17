@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="Modelos\Modelo_Horario\" />
+    <Folder Include="Logica\" />
   </ItemGroup>
 
 </Project>
