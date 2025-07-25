@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace Udelascore.Negocio.Models.RecursosHumanos;
+
+[Table("aspnet_Paths")]
+public partial class AspnetPaths
+{
+    public Guid ApplicationId { get; set; }
+
+    [Key]
+    public Guid PathId { get; set; }
+
+    [StringLength(256)]
+    public string Path { get; set; } = null!;
+
+    [StringLength(256)]
+    public string LoweredPath { get; set; } = null!;
+
+    [ForeignKey("ApplicationId")]
+    [InverseProperty("AspnetPaths")]
+    public virtual AspnetApplications Application { get; set; } = null!;
+
+    [InverseProperty("Path")]
+    public virtual AspnetPersonalizationAllUsers? AspnetPersonalizationAllUsers { get; set; }
+
+    [InverseProperty("Path")]
+    public virtual ICollection<AspnetPersonalizationPerUser> AspnetPersonalizationPerUser { get; set; } = new List<AspnetPersonalizationPerUser>();
+}

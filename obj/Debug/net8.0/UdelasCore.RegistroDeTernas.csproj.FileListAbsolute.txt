@@ -110,3 +110,13 @@ C:\Users\jarojas\source\repos\jramsy\UdelasCore\obj\Debug\net8.0\UdelasCore.Regi
 C:\Users\jarojas\source\repos\jramsy\UdelasCore\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.RazorAssemblyInfo.cache
 C:\Users\jarojas\source\repos\jramsy\UdelasCore\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.RazorAssemblyInfo.cs
 C:\Users\jarojas\source\repos\jramsy\UdelasCore\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.sourcelink.json
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.csproj.AssemblyReference.cache
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.AssemblyInfoInputs.cache
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.AssemblyInfo.cs
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.csproj.CoreCompileInputs.cache
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.RazorAssemblyInfo.cache
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.RazorAssemblyInfo.cs
+C:\Users\dabustaman\Desktop\UdelasCores\obj\Debug\net8.0\UdelasCore.RegistroDeTernas.sourcelink.json

@@ -1,0 +1,483 @@
+﻿:root {
+    --primary-color: #303D7B;
+    --secondary-color: #38b6ff;
+    --accent-color: #ACD1F1;
+    --background-color: #FFFFFF;
+    --text-color: #949191;
+    --hover-color: #38b6ff;
+    --menu-background: #FFFFFF;
+    --page-background: #E9F2FA;
+    --status-color: green;
+    --titulos-color: black;
+    --focus-border-color: #5CA2C7;
+    --fondo-div: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+    /* Esto ayuda con cálculos de tamaño */
+}
+
+html {
+    /* overflow: hidden; */
+    /* Esto eliminará el scroll del elemento raíz */
+    height: 100%;
+    /* Asegura que html ocupe toda la altura */
+}
+
+/* Estilos Generales */
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    /* overflow: hidden; */
+    /* Por si acaso también se aplica aquí */
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Cambié min-height por height */
+    width: 100%;
+    /* overflow: hidden; */
+    /* Previene cualquier scroll en el wrapper */
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    background-color: var(--background-color);
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    align-items: center;
+    background-color: var(--menu-background);
+    padding: 10px 20px;
+    height: 80px;
+    z-index: 1000;
+    position: relative;
+}
+
+/* Contenedor para el menú lateral y el contenido principal */
+.contenido-principal {
+    flex: 1;
+    display: flex;
+    width: 100%;
+}
+
+/* Contenido Principal */
+.container-pagina {
+    flex: 1;
+    padding: 10px;
+    background-color: var(--page-background);
+    overflow-y: auto;
+    height: calc(100vh - 80px - 50px);
+    /* Resta header y footer */
+    flex-wrap: wrap;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Contenedor para el ícono de hamburguesa */
+.menu-toggle {
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--text-color);
+    margin-right: 20px;
+}
+
+    .menu-toggle i:hover {
+        color: var(--hover-color);
+    }
+
+.sistema-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu-centro {
+    display: flex;
+    gap: 20px;
+}
+
+    .menu-centro a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+        .menu-centro a:hover {
+            color: var(--hover-color);
+        }
+
+.logo img {
+    height: 60px;
+}
+
+.logo1 img {
+    height: 40px;
+    margin-left: 20px;
+    border-radius: 15px;
+}
+
+/* Menú Lateral */
+.menu-lateral {
+    width: 250px;
+    background-color: var(--menu-background);
+    height: calc(100vh - 80px - 50px);
+    transition: width 0.3s, transform 0.3s;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* overflow: hidden;    */
+}
+
+
+
+.menu-fixed-top {
+    padding: 0px;
+    z-index: 1;
+    flex-shrink: 0;
+    /* Evita que se reduzca */
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+    /* Estilos adicionales para la sección de usuario */
+}
+
+.menu-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+}
+
+    .menu-scrollable ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+.menu-fixed-bottom {
+    padding: 0px;
+    z-index: 1;
+    flex-shrink: 0;
+    /* Evita que se reduzca */
+    /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
+    /* Estilos adicionales para la sección de salir */
+}
+
+.menu-lateral.menu-cerrado .menu-fixed-top,
+.menu-lateral.menu-cerrado .menu-fixed-bottom {
+    padding: 0px;
+    text-align: center;
+}
+
+
+
+/* Personaliza la barra de scroll */
+.menu-scrollable::-webkit-scrollbar {
+    width: 20px;
+}
+
+.menu-scrollable::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+.menu-scrollable::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.usuario-info {
+    text-align: left;
+    padding: 20px;
+}
+
+    .usuario-info img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        /* margin-bottom: 8px; */
+    }
+
+    .usuario-info h3 {
+        margin: 10px 0 5px;
+        font-size: 18px;
+        color: var(--secondary-color);
+    }
+
+    .usuario-info .estatus {
+        margin: 0;
+        font-size: 14px;
+        color: var(--text-color);
+    }
+
+        .usuario-info .estatus span {
+            color: var(--status-color);
+        }
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .menu-lateral ul li {
+        padding: 15px;
+    }
+
+/* Estilos para el globito de notificación */
+.notificacion {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.menu-lateral ul li a {
+    position: relative;
+    display: block;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+    .menu-lateral ul li a i {
+        margin-right: 10px;
+    }
+
+.menu-lateral button i {
+    margin-right: 10px;
+}
+
+.menu-lateral ul li a:hover {
+    color: var(--hover-color);
+}
+
+.menu-lateral.menu-cerrado {
+    width: 60px;
+}
+
+    .menu-lateral.menu-cerrado .usuario-info {
+        padding: 10px;
+    }
+
+    .menu-lateral.menu-cerrado .menu-texto {
+        display: none;
+    }
+
+
+    .menu-lateral.menu-cerrado .menu-textomovil {
+        display: block;
+        font-size: 20px;
+        color: var(--status-color);
+        padding: 10px;
+    }
+
+    .menu-lateral.menu-cerrado img {
+        height: 40px;
+        width: 40px;
+        padding: 0px;
+    }
+
+.usuario-info .menu-textomovil {
+    display: none;
+}
+
+.menu-lateral.menu-cerrado ul li a i {
+    margin-right: 10px;
+}
+
+
+.logout-link {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+    .logout-link:hover {
+        color: var(--hover-color);
+        text-decoration: none;
+    }
+
+.menu-salir {
+    padding: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+    .menu-salir a {
+        display: flex;
+        align-items: center;
+        color: var(--text-color);
+        text-decoration: none;
+    }
+
+    .menu-salir span {
+        padding: 10px;
+    }
+
+    .menu-salir a:hover {
+        color: var(--hover-color);
+        width: 100%;
+    }
+
+/* Estilos para las filas y columnas */
+.fila {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+}
+
+.columna {
+    flex: 1;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blanco {
+    background-color: var(--fondo-div);
+}
+
+footer {
+    background-color: var(--menu-background);
+    border-top: 1px solid #dee2e6;
+    padding: 20px 0;
+    height: 50px;
+    min-height: 30px;
+    /* Más grueso que antes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.footer-content {
+    text-align: center;
+    width: 100%;
+}
+
+
+
+/* Media Queries para Responsive Design */
+@media (max-width: 768px) {
+    .menu-centro {
+        display: none;
+    }
+
+    .menu-lateral {
+        width: 60px;
+    }
+
+    .menu-lateral {
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+
+    .container-pagina {
+        margin-left: 0;
+    }
+
+    .menu-lateral.menu-cerrado {
+        width: 60px;
+    }
+
+    .menu-lateral .menu-texto {
+        display: none;
+    }
+
+    .usuario-info .estatus span {
+        display: none;
+        color: var(--status-color);
+    }
+
+    .usuario-info .menu-textomovil {
+        display: block;
+        font-size: 20px;
+        color: var(--status-color);
+    }
+
+    .menu-lateral img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .usuario-info {
+        text-align: center;
+        padding: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 40px;
+    }
+
+    .logo1 img {
+        height: 30px;
+    }
+
+    .container-pagina {
+        margin-left: 0;
+    }
+
+    .menu-lateral {
+        position: fixed;
+        left: 0;
+        top: 80px;
+        z-index: 1000;
+        transform: translateX(-100%);
+    }
+
+        .menu-lateral.menu-abierto {
+            transform: translateX(0);
+            display: block;
+        }
+
+        .menu-lateral img {
+            height: 40px;
+            width: 40px;
+        }
+
+    .usuario-info {
+        text-align: center;
+        padding: 0px;
+    }
+
+    .sistema-info p {
+        display: none;
+    }
+}

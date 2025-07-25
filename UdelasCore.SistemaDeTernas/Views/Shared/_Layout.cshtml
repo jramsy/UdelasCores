@@ -1,0 +1,128 @@
+﻿@using UdelasCore.SistemaDeTernas.Helpers
+@using Microsoft.Extensions.Options
+
+@inject IOptions<ConfigSistema> config
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styleplantilla.css">
+    <link rel="stylesheet" href="~/css/StyleRender.css">
+    <script src="https://kit.fontawesome.com/cde1708d67.js" crossorigin="anonymous"></script>
+    <title>Documentos Docentes - SIRCAD</title>
+    <style>
+        /* Estilos para las filas */
+        .fila {
+            display: flex;
+            gap: 10px;
+            margin: 10px;
+        }
+
+        /* Estilos para las columnas */
+        .columna {
+            flex: 1;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .blanco {
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            <div class="form-row">
+                <!-- Ícono de hamburguesa -->
+                <div class="menu-toggle sistema-info" onclick="toggleMenu()">
+                    <div><i class="fa-solid fa-bars"></i></div>
+                    <div class="logo1">
+                        <h5>@config.Value.NombreSistema</h5>
+                    </div>
+                </div>
+
+                <!-- Logo de UDELAS a la derecha -->
+                <div class="logo">
+                    <img src="@Url.Content(config.Value.LogoUdelas)" alt="Logo Udelas" />
+                </div>
+            </div>
+        </header>
+        <!-- Menú Lateral y Contenido Principal -->
+        <div class="contenido-principal">
+            <!-- Menú Lateral -->
+            <nav class="menu-lateral">
+                <div class="menu-fixed-top">
+                    <!-- Información del usuario -->
+                    <div class="usuario-info">
+                        @*<img src="imagen/docente1.png" alt="Foto del Docente" />*@
+                        <h3 class="menu-texto">Hello! Juan Pérez</h3>
+                        <p class="estatus menu-texto">Rol: <span>ROL</span></p>
+                        <p class="menu-textomovil"><i class="fa-solid fa-circle-check"></i></p>
+                    </div>
+                </div>
+                <!-- Opciones del menú -->
+                <div class="menu-scrollable">
+                    <ul>
+                        @foreach (var item in MenuConfig.ObtenerMenus())
+                        {
+                            if (item.Roles.Any(r => r == "Rectora"))
+                            {
+                                <li>
+                                    <a asp-controller="@item.AspController" asp-action="@item.AspAction">
+                                        <i class="@item.Icon"></i>
+                                        <span class="menu-texto">@item.Titulo</span>
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <!-- Opción de salir -->
+                <div class="menu-salir">
+                    <div class="menu-fixed-bottom">
+                        <a href="PantallaInicioSesion.html" onclick="cerrarSesion()">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span class="menu-texto">Salir</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Contenido Principal -->
+            <div class="container-pagina">
+                <div class="fila">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para abrir/cerrar el menú lateral
+        function toggleMenu() {
+            const menuLateral = document.querySelector('.menu-lateral');
+            const anchoPantalla = window.innerWidth;
+
+            if (anchoPantalla <= 480) {
+                // Para pantallas pequeñas: alternar la clase .menu-abierto
+                menuLateral.classList.toggle('menu-abierto');
+            } else {
+                // Para pantallas grandes: mantener la funcionalidad existente
+                menuLateral.classList.toggle('menu-cerrado');
+            }
+        }
+
+        // Función para cerrar sesión (puedes implementar la lógica necesaria)
+        function cerrarSesion() {
+            alert("Sesión cerrada");
+        }
+    </script>
+</body>
+
+</html>

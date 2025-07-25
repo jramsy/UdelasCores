@@ -1,0 +1,133 @@
+﻿@using UdelasCore.SistemaDeTernas.Helpers
+@using Microsoft.Extensions.Options
+
+@inject IOptions<ConfigSistema> config
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - SIRCAD</title>
+    <style>
+        body {
+            background-color: #FFFF; /* Fondo */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background: linear-gradient(#5CA2C7, #ffff);
+            border: 2px solid #5CA2C7;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Banner superior */
+        .banner {
+            padding: 10px 0;
+            text-align: center;
+            color: #FFFFFF;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+            .banner img {
+                height: 60px;
+                margin-bottom: 5px;
+            }
+
+            .banner h2 {
+                margin: 5px 0;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .banner p {
+                margin: 0;
+                font-size: 14px;
+            }
+
+        h1 {
+            color: #303D7B;
+            margin: 20px 0;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #5CA2C7;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #5CA2C7;
+            color: #FFFFFF;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 85%;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background-color: #303D7B;
+            }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+            .separator div {
+                flex: 1;
+                height: 1px;
+                background-color: #5CA2C7;
+            }
+
+            .separator span {
+                margin: 0 10px;
+                color: #5CA2C7;
+                font-weight: bold;
+            }
+
+        a {
+            text-decoration: none;
+            color: #5CA2C7;
+            font-weight: bold;
+        }
+
+            a:hover {
+                color: #303D7B;
+            }
+
+        .links {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Banner superior -->
+        <div class="banner">
+            <img src="@Url.Content(config.Value.LogoUdelas)" alt="Logo Udelas" />
+            <h2>@config.Value.NombreSistemaSiglas</h2>
+            <p>@config.Value.NombreSistema</p>
+        </div>
+
+        <!-- Formulario de inicio de sesión -->
+        @RenderBody()
+    </div>
+
+</body>
+</html>

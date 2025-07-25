@@ -1,0 +1,77 @@
+﻿<!-- Sidebar + Contenido -->
+<div class="contenido-principal">
+    <div id="sidebarContainer"></div>
+
+    <div class="container-pagina">
+        <!-- Filtros -->
+        <div class="fila">
+            <div class="columna blanco">
+                <div class="tarjeta-header">
+                    <h5><i class="fa-solid fa-file"></i> Ternas</h5>
+                </div>
+                <div class="tarjeta-cuerpo">
+                    <div class="search-container">
+                        <select id="filtroAnio">
+                            <option value="">Todos los años</option>
+                            <option value="2025">2025</option>
+                        </select>
+                        <select id="filtroSemestre">
+                            <option value="">Todos los semestres</option>
+                            <option value="II Semestre">II Semestre</option>
+                            <option value="IV Semestre">IV Semestre</option>
+                            <option value="VI Semestre">VI Semestre</option>
+                            <option value="VIII Semestre">VIII Semestre</option>
+                            <option value="X Semestre">X Semestre</option>
+                        </select>
+                        <select id="filtroCarrera">
+                            <option value="">Todas las carreras</option>
+                            <option value="Licenciatura en Educación">Licenciatura en Educación</option>
+                        </select>
+                        <select id="filtroFacultad">
+                            <option value="">Todas las facultades</option>
+                            <option value="Facultad de Educación">Facultad de Educación</option>
+                        </select>
+                        <button onclick="filtrar()">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla -->
+        <div class="fila">
+            <div class="columna blanco">
+                <div class="tarjeta-header">
+                    <h5><i class="fas fa-file-alt"></i> Ternas Registradas</h5>
+                </div>
+                <div class="tarjeta-cuerpo">
+                    <div class="table-container">
+                        <table id="tablaTernas">
+                            <thead>
+                                <tr>
+                                    <th><i class="fa-solid fa-arrow-down-9-1"></i> N° Terna</th>
+                                    <th><i class="fa-solid fa-building-columns"></i> Año</th>
+                                    <th><i class="fa-solid fa-graduation-cap"></i> Semestre</th>
+                                    <th><i class="fa-solid fa-book-open"></i> Facultad</th>
+                                    <th><i class="fa-solid fa-book-open"></i> Carrera</th>
+                                    <th><i class="fa-solid fa-play"></i> Asignatura</th>
+                                    <th><i class="fa-solid fa-play"></i> Inicia</th>
+                                    <th><i class="fa-solid fa-list"></i> Culmina</th>
+                                    <th><i class="fas fa-info-circle"></i> Estatus</th>
+                                    <th><i class="fas fa-cog"></i> Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Aquí se inyectan dinámicamente las filas -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Detalle Terna -->
+<div id="modalBackground" class="modal-background"></div>
+
+<div id="modalLicenciatura" class="modal">

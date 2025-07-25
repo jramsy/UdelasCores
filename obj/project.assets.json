@@ -4127,23 +4127,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jarojas\\.nuget\\packages\\": {},
+    "C:\\Users\\dabustaman\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\UdelasCore.RegistroDeTernas.csproj",
+      "projectUniqueName": "C:\\Users\\dabustaman\\Desktop\\UdelasCores\\UdelasCore.RegistroDeTernas.csproj",
       "projectName": "UdelasCore.RegistroDeTernas",
-      "projectPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\UdelasCore.RegistroDeTernas.csproj",
-      "packagesPath": "C:\\Users\\jarojas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jarojas\\source\\repos\\jramsy\\UdelasCore\\obj\\",
+      "projectPath": "C:\\Users\\dabustaman\\Desktop\\UdelasCores\\UdelasCore.RegistroDeTernas.csproj",
+      "packagesPath": "C:\\Users\\dabustaman\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dabustaman\\Desktop\\UdelasCores\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\jarojas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dabustaman\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4384,7 +4384,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
