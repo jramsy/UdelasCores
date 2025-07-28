@@ -1,4 +1,11 @@
-﻿<!-- Sidebar + Contenido -->
+﻿@using UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs;
+@{
+    ViewData["Title"] = "Revisión de Ternas";
+
+    var ternas = ViewBag.Ternas as List<ObtainTernasDTO>;
+}
+
+<!-- Sidebar + Contenido -->
 <div class="contenido-principal">
     <div id="sidebarContainer"></div>
 
@@ -61,7 +68,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Aquí se inyectan dinámicamente las filas -->
+                                @if (ternas.Count() > 0)
+                                {
+                                    @foreach (var terna in ternas)
+                                    {
+                                        <tr>
+                                            <td>@terna.IdTerna</td>
+                                            <td>@terna.Anio</td>
+                                            <td>@terna.NomPeriodo</td>
+                                            <td>@terna.Facultad</td>
+                                            <td>@terna.Carrera</td>
+                                            <td>@terna.Descripcion</td>
+                                            <td>2025</td>
+                                            <td>2025</td>
+                                            <td>2025</td>
+                                            <td>2025</td>
+                                        </tr>
+                                    }
+                                }
                             </tbody>
                         </table>
                     </div>

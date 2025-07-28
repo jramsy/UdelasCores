@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Udelascore.Negocio.Data;
+using UdelasCore.Negocio.Servicios.SistemaTernas;
 using UdelasCore.SistemaDeTernas.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<BancoDeDatosContext>(options => options.UseSqlServ
 builder.Services.Configure<ConfigSistema>(builder.Configuration.GetSection("ConfigSistema"));
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<TernaService>();
 
 var app = builder.Build();
 

@@ -17,17 +17,12 @@ namespace Udelascore.Negocio.Models.RecursosHumanos
 
         // Puedes usar un tipo int si el año se representa con números
         [Required]
-        public int Year { get; set; } = DateTime.Now.Year;
+        public int Anio { get; set; } = DateTime.Now.Year;
 
         [Required]
-        public int IdFacultad { get; set; }
-
+        public int CodMateria { get; set; } //Materias_por_carreras esta es la asignatura que trae la facultaf y la carrera de la terna en HORARIOS DOCENCIA
         [Required]
-        public int IdSemestre { get; set; }
-
-        [Required]
-        public int CodCarrera { get; set; }
-
+        public int CodCarrera { get; set; } //Materias_por_carreras esta es la carrera que trae la facultad y la carrera de la terna en HORARIOS DOCENCIA
         [Required]
         public DateOnly FechaInicio { get; set; }
 
