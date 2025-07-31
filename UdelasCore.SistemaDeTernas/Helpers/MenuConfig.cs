@@ -34,8 +34,8 @@
                 {
                     Titulo = "Historial",
                     Icon = "fa-solid fa-clock-rotate-left",
-                    AspController = "Home",
-                    AspAction = "Index",
+                    AspController = "Terna",
+                    AspAction = "Historial",
                     Roles = new List<string> {"Rectora" }
                 },
                 new MenuItem

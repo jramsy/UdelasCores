@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Udelascore.Negocio.Data;
+using UdelasCore.Negocio.Data;
 using UdelasCore.Negocio.Servicios.SistemaTernas;
 using UdelasCore.SistemaDeTernas.Helpers;
 
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Contexto de la base de datos de Recursos Humanos
 builder.Services.AddDbContext<RecursosHumanosContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RHConnection")));
 builder.Services.AddDbContext<BancoDeDatosContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BANCOConnection")));
-
+builder.Services.AddDbContext<HorariosDocenciaContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HORARIOConnection")));
 //TODO AGREGAR LA CONEXION AL CONTEXT DE LOGIN
 
 
@@ -20,6 +21,7 @@ builder.Services.Configure<ConfigSistema>(builder.Configuration.GetSection("Conf
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<TernaService>();
+builder.Services.AddScoped<ProfesorService>();
 
 var app = builder.Build();
 

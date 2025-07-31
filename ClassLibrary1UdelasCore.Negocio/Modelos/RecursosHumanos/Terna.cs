@@ -26,6 +26,9 @@ namespace Udelascore.Negocio.Models.RecursosHumanos
         [Required]
         public DateOnly FechaInicio { get; set; }
 
+        [Column("EstadoIdEstado")]
+        public int EstadoIdEstado { get; set; } = 1; // Asignar un estado por defecto, "PENDIETE" (1)
+
         [Required]
         public DateOnly FechaFinal { get; set; }
 
@@ -39,6 +42,7 @@ namespace Udelascore.Negocio.Models.RecursosHumanos
         public DateTime? FechaModificacion { get; set; } = null; // Puede ser null hasta que se modifique
         public DateTime? FechaBorrador { get; set; } = null; // Puede ser null hasta que se marque como borrador
 
-        public virtual Estado Estado { get; set; } // Relación con la entidad Estado (HORARIO DOCENCIA)
+        public virtual Estado? Estado { get; set; } // Relación con la entidad Estado (HORARIO DOCENCIA)
+        public virtual ICollection<TernaDetalle>? TernaDetalles { get; set; }
     }
 }

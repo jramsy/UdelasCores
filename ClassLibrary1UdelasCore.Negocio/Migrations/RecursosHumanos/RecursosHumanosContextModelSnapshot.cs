@@ -39,6 +39,58 @@ namespace UdelasCore.Negocio.Migrations
                     b.ToTable("aspnet_UsersInRoles", (string)null);
                 });
 
+            modelBuilder.Entity("UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs.ObtainTernasDTO", b =>
+                {
+                    b.Property<int>("Anio")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Carrera")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CodCarrera")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CodMateria")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ColorEstado")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EstadoNombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Facultad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly>("FechaFinal")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("FechaInicio")
+                        .HasColumnType("date");
+
+                    b.Property<int>("IdTerna")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NomPeriodo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Periodo")
+                        .HasColumnType("int");
+
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
+                });
+
             modelBuilder.Entity("UdelasCore.Negocio.Modelos.RecursosHumanos.Estado", b =>
                 {
                     b.Property<int>("IdEstado")
@@ -49,6 +101,10 @@ namespace UdelasCore.Negocio.Migrations
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -67,6 +123,13 @@ namespace UdelasCore.Negocio.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdTernaDetalle"));
 
+                    b.Property<string>("CedDocente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EstadoIdEstado")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("FechaBorrador")
                         .HasColumnType("datetime2");
 
@@ -75,9 +138,6 @@ namespace UdelasCore.Negocio.Migrations
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("IdDocente")
-                        .HasColumnType("int");
 
                     b.Property<int>("IdEstado")
                         .HasColumnType("int");
@@ -94,7 +154,14 @@ namespace UdelasCore.Negocio.Migrations
                     b.Property<int>("IdUsuarioModificador")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TernaIdTerna")
+                        .HasColumnType("int");
+
                     b.HasKey("IdTernaDetalle");
+
+                    b.HasIndex("EstadoIdEstado");
+
+                    b.HasIndex("TernaIdTerna");
 
                     b.ToTable("TernaDetalles");
                 });
@@ -4600,7 +4667,7 @@ namespace UdelasCore.Negocio.Migrations
                     b.Property<int>("CodMateria")
                         .HasColumnType("int");
 
-                    b.Property<int>("EstadoIdEstado")
+                    b.Property<int?>("EstadoIdEstado")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaBorrador")
@@ -5568,6 +5635,21 @@ namespace UdelasCore.Negocio.Migrations
                         .HasConstraintName("FK__aspnet_Us__UserI__2116E6DF");
                 });
 
+            modelBuilder.Entity("UdelasCore.Negocio.Modelos.RecursosHumanos.TernaDetalle", b =>
+                {
+                    b.HasOne("UdelasCore.Negocio.Modelos.RecursosHumanos.Estado", "Estado")
+                        .WithMany()
+                        .HasForeignKey("EstadoIdEstado");
+
+                    b.HasOne("Udelascore.Negocio.Models.RecursosHumanos.Terna", "Terna")
+                        .WithMany("TernaDetalles")
+                        .HasForeignKey("TernaIdTerna");
+
+                    b.Navigation("Estado");
+
+                    b.Navigation("Terna");
+                });
+
             modelBuilder.Entity("Udelascore.Negocio.Models.RecursosHumanos.AspnetMembership", b =>
                 {
                     b.HasOne("Udelascore.Negocio.Models.RecursosHumanos.AspnetApplications", "Application")
@@ -5663,9 +5745,7 @@ namespace UdelasCore.Negocio.Migrations
                 {
                     b.HasOne("UdelasCore.Negocio.Modelos.RecursosHumanos.Estado", "Estado")
                         .WithMany()
-                        .HasForeignKey("EstadoIdEstado")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EstadoIdEstado");
 
                     b.Navigation("Estado");
                 });
@@ -5695,6 +5775,11 @@ namespace UdelasCore.Negocio.Migrations
                     b.Navigation("AspnetPersonalizationPerUser");
 
                     b.Navigation("AspnetProfile");
+                });
+
+            modelBuilder.Entity("Udelascore.Negocio.Models.RecursosHumanos.Terna", b =>
+                {
+                    b.Navigation("TernaDetalles");
                 });
 #pragma warning restore 612, 618
         }

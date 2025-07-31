@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\SistemaDeTernas\" />
+    <Folder Include="Modelos\BancoDeDatos\DTOs\" />
+    <Folder Include="Servicios\BancoDeDatos\" />
   </ItemGroup>
 
 </Project>

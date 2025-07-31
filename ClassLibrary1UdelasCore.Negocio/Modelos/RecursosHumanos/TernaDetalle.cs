@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Udelascore.Negocio.Models.RecursosHumanos;
 
 namespace UdelasCore.Negocio.Modelos.RecursosHumanos
 {
@@ -21,7 +17,7 @@ namespace UdelasCore.Negocio.Modelos.RecursosHumanos
         public int IdEstado { get; set; }
 
         [Required]
-        public int IdDocente { get; set; }
+        public string CedDocente { get; set; } = string.Empty; // Asumimos que el docente se identifica por su cédula
 
         // Valores por defecto para IDs de usuario si no se asignan aún
         public int IdUsuarioCreador { get; set; } = 0;
@@ -32,7 +28,12 @@ namespace UdelasCore.Negocio.Modelos.RecursosHumanos
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         // Modificación y borrado pueden ser nulos hasta que se actualicen
-        public DateTime? FechaModificacion { get; set; }
-        public DateTime? FechaBorrador { get; set; }
+        public DateTime? FechaModificacion { get; set; } = new DateTime(1754, 1, 1);
+        public DateTime? FechaBorrador { get; set; } = new DateTime(1754, 1, 1);
+
+        [ForeignKey(nameof(IdTerna))]
+        public virtual Terna? Terna { get; set; } // Relación con la entidad Terna
+        [ForeignKey(nameof(IdEstado))]
+        public virtual Estado? Estado { get; set; } // Relación con la entidad Estado
     }
 }

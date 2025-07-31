@@ -223,6 +223,7 @@ public partial class RecursosHumanosContext : DbContext
     public virtual DbSet<TernaDetalle> TernaDetalles { get; set; }
 
     public DbSet<ObtainTernasDTO> TernasDTO { get; set; }
+    public DbSet<TernaDetalleProfesorDTO> TernaDetalleProfesorDTO { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -723,6 +724,12 @@ public partial class RecursosHumanosContext : DbContext
         });
 
         modelBuilder.Entity<ObtainTernasDTO>()
+       .HasNoKey()
+       .ToView(null); // Esto evita que EF Core intente mapear a una tabla o vista real
+
+        OnModelCreatingPartial(modelBuilder);
+
+        modelBuilder.Entity<TernaDetalleProfesorDTO>()
        .HasNoKey()
        .ToView(null); // Esto evita que EF Core intente mapear a una tabla o vista real
 

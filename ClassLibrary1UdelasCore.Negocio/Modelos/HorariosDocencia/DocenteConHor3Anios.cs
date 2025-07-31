@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace UdelasCore.Negocio.Modelos.HorariosDocencia;
+
+[Keyless]
+public partial class DocenteConHor3Anios
+{
+    [Column("ced_profesor")]
+    [StringLength(13)]
+    [Unicode(false)]
+    public string CedProfesor { get; set; } = null!;
+
+    [Column("cant1")]
+    public int? Cant1 { get; set; }
+}

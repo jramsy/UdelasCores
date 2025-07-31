@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UdelasCore.SistemaDeTernas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4708d97af04c3c9fc5dcb8032e3296135b35a21a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb4a9562fa93b3b31417424a953159e89554e563")]
 [assembly: System.Reflection.AssemblyProductAttribute("UdelasCore.SistemaDeTernas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UdelasCore.SistemaDeTernas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

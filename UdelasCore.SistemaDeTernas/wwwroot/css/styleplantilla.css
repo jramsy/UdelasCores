@@ -389,6 +389,169 @@ footer {
     width: 100%;
 }
 
+.btn-guardar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* Nuevas propiedades para alinear a la derecha */
+    margin-left: auto;
+    margin-right: 0;
+}
+
+    .btn-guardar:hover {
+        background-color: #3a5bd9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .btn-guardar i {
+        margin-right: 8px;
+    }
+/* Aprobado */
+.btn-guardar {
+    background-color: #4a6cf7; /* verde */
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: transform 0.15s ease-in-out, background-color 0.2s;
+}
+
+    .btn-guardar:hover {
+        background-color: #007bff;
+    }
+
+    .btn-guardar.animate {
+        animation: sprintAprobado 0.3s ease;
+    }
+
+/* Rechazado */
+.btn-rechazar {
+    background-color: #e74c3c; /* rojo */
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: transform 0.15s ease-in-out, background-color 0.2s;
+}
+
+    .btn-rechazar:hover {
+        background-color: #c0392b;
+    }
+
+    .btn-rechazar.animate {
+        animation: sprintRechazo 0.3s ease;
+    }
+
+/* Animaciones tipo sprint */
+@keyframes sprintAprobado {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes sprintRechazo {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15) rotate(-1deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn-ver-detalle {
+    background-color: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+    .btn-ver-detalle:hover {
+        background-color: #094dc1;
+    }
+
+
+/* Estilo para la notificación */
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #323232;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 9999;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateY(-20px);
+}
+
+    .notificacion.mostrar {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .notificacion.aprobado {
+        background-color: #28a745;
+    }
+
+    .notificacion.rechazado {
+        background-color: #dc3545;
+    }
+
+    .notificacion.info {
+        background-color: #007bff;
+    }
+
+
+    /* Icono dentro de la notificación */
+    .notificacion .icono {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        fill: #4CAF50; /* verde check */
+    }
+
 
 
 /* Media Queries para Responsive Design */
@@ -439,9 +602,20 @@ footer {
         text-align: center;
         padding: 0px;
     }
+
+    .btn-guardar {
+        width: 100%;
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 480px) {
+
+    .btn-guardar {
+        width: 100%;
+        margin-left: 0;
+    }
+
     .logo img {
         height: 40px;
     }
@@ -480,4 +654,11 @@ footer {
     .sistema-info p {
         display: none;
     }
+}
+
+
+/* Estilos del box model */
+
+.mb-10 {
+    margin-bottom: 10px;
 }

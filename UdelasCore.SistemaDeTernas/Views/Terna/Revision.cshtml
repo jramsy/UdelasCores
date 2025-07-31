@@ -79,10 +79,15 @@
                                             <td>@terna.Facultad</td>
                                             <td>@terna.Carrera</td>
                                             <td>@terna.Descripcion</td>
-                                            <td>2025</td>
-                                            <td>2025</td>
-                                            <td>2025</td>
-                                            <td>2025</td>
+
+                                            <td>@terna.FechaInicio</td>
+                                            <td>@terna.FechaFinal</td>
+                                            <td><span class="estado @terna.EstadoNombre.ToLower()">@terna.EstadoNombre</span></td>
+                                            <td>
+                                                <div style="display: flex; gap: 8px; justify-content: center; align-items: center;">
+                                                    <button onclick="verTerna('@terna.IdTerna', '@terna.IdEstado')" style="color: #0d6efd; text-decoration: underline; cursor: pointer; font-size: 13px; font-weight: 500;">Ver Detalle</button>
+                                                </div>
+                                            </td>
                                         </tr>
                                     }
                                 }
@@ -96,6 +101,156 @@
 </div>
 
 <!-- Modal Detalle Terna -->
-<div id="modalBackground" class="modal-background"></div>
+
 
 <div id="modalLicenciatura" class="modal">
+    <div class="fila">
+        <div class="columna blanco">
+            <input type="type" name="name" value="" id="IdTerna"/>
+            <div class="tarjeta-header">
+                <span class="close-modal" onclick="cerrarModal('modalLicenciatura')">&times;</span>
+                <h5><i class="fas fa-info-circle"></i> Detalle de Terna TRN-001</h5>
+            </div>
+
+            <div class="tarjeta-cuerpo" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 600px; margin-top: 20px;">
+                <div><strong>ID Terna</strong><div>TRN-001</div></div>
+                <div><strong>Semestre</strong><div>2024-1</div></div>
+                <div><strong>Facultad</strong><div>Ingeniería</div></div>
+                <div><strong>Carrera</strong><div>Ingeniería de Sistemas</div></div>
+                <div><strong>Asignatura</strong><div>Informática</div></div>
+                <div><strong>Estado</strong><div><span class="estado enviada">PENDIENTE</span></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="fila">
+        <div class="columna blanco">
+            <div class="tarjeta-header">
+                <h5><i class="fa-solid fa-chalkboard-teacher"></i> Docentes Propuestos:</h5>
+            </div>
+
+            <div class="grupo-docentes" id="grupo-docentes">
+            </div>
+            <div style="margin-top: 10px; padding: 0 10px; text-align: right; ">
+                <button type="submit" class="btn btn-guardar" onclick="updateTernaDetalle(3)"><i class="fa-solid fa-check"></i> Aprobar Docente</button>
+                <button type="submit" class="btn btn-rechazar" onclick="updateTernaDetalle(2)"><i class="fa-solid fa-xmark"></i> Rechazar Docente</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const ternaIdInput = document.querySelector("#IdTerna");
+
+        async function verTerna(IdTerna, IdEstado) {
+            let html = '';
+            const detalleTerna = await obtenerDetallesTerna(IdTerna);
+            ternaIdInput.value = IdTerna;
+
+            if (!detalleTerna || detalleTerna.length === 0) {
+                mostrarAlerta({
+                    titulo: 'Sin docentes',
+                    texto: 'No hay docentes disponibles para esta terna.',
+                    icono: 'info'
+                });
+                return;
+            }
+
+            detalleTerna.forEach(e => {
+                html += `
+                    <div class="docente-item">
+                        <label>
+                            <input type="radio" name="docenteSeleccionado" value="${e.idTernaDetalle}" required />
+                            <div class="contenido-docente">
+                                <strong>${e.nombre} ${e.apellido}</strong>
+                                <small>${e.nombre_Estudio}</small>
+                            </div>
+                        </label>
+                    </div>
+                `;
+            });
+
+            document.querySelector("#grupo-docentes").innerHTML = html;
+            abrirModal('modalLicenciatura');
+        }
+
+        async function obtenerDetallesTerna(IdTerna) {
+            try {
+                const response = await fetch(`api/terna/${IdTerna}/detalles`);
+                if (!response.ok) throw new Error('Error al obtener los detalles');
+                return await response.json();
+            } catch (err) {
+                console.error(err.message);
+            }
+        }
+
+        async function updateTernaDetalle(IdEstado) {
+            const IdTerna = ternaIdInput.value;
+            let IdTernaDetalleSeleccionado = null;
+
+            // Solo pedir docente si el estado NO es 2
+            if (IdEstado !== 2) {
+            const seleccionado = document.querySelector('input[name="docenteSeleccionado"]:checked');
+            if (!seleccionado) {
+                mostrarAlerta({
+                    titulo: 'Seleccione un docente',
+                    texto: 'Debe seleccionar un docente antes de continuar.',
+                    icono: 'warning'
+                });
+                return;
+            }
+            IdTernaDetalleSeleccionado = seleccionado.value;
+        }
+
+            // Confirmar antes de enviar
+            mostrarAlerta({
+            titulo: '¿Está seguro?',
+            texto: 'Esta acción actualizará el estado de la terna.',
+            icono: 'question',
+            mostrarConfirmacion: true,
+            callback: async () => {
+                try {
+                    const response = await fetch(`api/terna/${IdTerna}/estado`, {
+                        method: "PUT",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            IdEstado,
+                            IdTernaDetalleSeleccionado,
+                            IdTerna,
+                            IdUsuarioModificador: 1
+                        })
+                    });
+
+                    if (!response.ok) throw new Error('Error al actualizar el estado');
+
+                    const resultado = await response.json();
+
+                    mostrarAlerta({
+                        titulo: 'Éxito',
+                        texto: 'La terna fue actualizada correctamente.',
+                        icono: 'success',
+                        mostrarConfirmacion: true,
+                        callback: () => window.location.reload()
+                    });
+
+                    return resultado;
+                } catch (err) {
+                    console.error(err.message);
+                    mostrarAlerta({
+                        titulo: 'Error',
+                        texto: 'Ocurrió un error al actualizar la terna.',
+                        icono: 'error'
+                    });
+                }
+            }
+        });
+        }
+
+        window.verTerna = verTerna;
+        window.updateTernaDetalle = updateTernaDetalle;
+    });
+</script>
+

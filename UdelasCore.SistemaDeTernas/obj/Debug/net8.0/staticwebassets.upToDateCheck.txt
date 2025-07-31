@@ -1,4 +1,5 @@
 wwwroot\css\site.css
+wwwroot\css\Style_NuevoRegistroTernas.css
 wwwroot\css\styleplantilla.css
 wwwroot\css\StyleRender.css
 wwwroot\favicon.ico

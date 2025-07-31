@@ -1,0 +1,150 @@
+﻿.tarjeta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .tarjeta-header i.fa-plus {
+        cursor: pointer;
+        color: #0dbe28;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+        .tarjeta-header i.fa-plus:hover {
+            text-decoration: underline;
+        }
+
+.icono-margen {
+    margin-right: 5px;
+}
+/* Mejora general del espaciado del formulario */
+#formSeleccionDocente {
+    padding: 16px 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    max-width: 100%;
+}
+
+/* Espacio extra dentro del modal */
+.modal .tarjeta-cuerpo {
+    padding: 20px;
+}
+
+/* Mejor separación entre los docentes */
+.grupo-docentes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 0%;
+    padding: 0 10px;
+}
+
+/* Docente-item más cómodo */
+/* Mejor apariencia y tamaño ajustado para cada docente */
+.docente-item {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px 14px;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+    /* Al pasar el cursor */
+    .docente-item:hover {
+        background-color: #eef5ff;
+    }
+
+    /* Radio button alineado */
+    .docente-item input[type="radio"] {
+        margin-top: 4px;
+        transform: scale(1.1);
+    }
+
+/* Contenido textual del docente */
+.contenido-docente {
+    display: flex;
+    flex-direction: column;
+}
+
+    /* Nombre del docente */
+    .contenido-docente strong {
+        font-size: 15px;
+        margin-bottom: 4px;
+        color: #1d3557;
+    }
+
+    /* Detalles adicionales */
+    .contenido-docente small {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.3;
+    }
+
+
+.label-dato {
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.btn-guardar {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+    .btn-guardar:hover {
+        background-color: #218838;
+    }
+
+<!-- TABLA DE APROBADOS-- >
+
+.tabla-aprobados {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.tabla-aprobados thead {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #666;
+}
+
+.tabla-aprobados th,
+.tabla-aprobados td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.btn-editar {
+    background-color: #a8d8ff;
+    color: #0056b3;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .btn-editar:hover {
+        background-color: #7ec7ff;
+    }

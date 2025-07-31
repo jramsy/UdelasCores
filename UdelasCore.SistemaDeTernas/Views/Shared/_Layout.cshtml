@@ -10,7 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/styleplantilla.css">
     <link rel="stylesheet" href="~/css/StyleRender.css">
+    <link rel="stylesheet" href="~/css/Style_NuevoRegistroTernas.css">
     <script src="https://kit.fontawesome.com/cde1708d67.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/site.js"></script>
     <title>Documentos Docentes - SIRCAD</title>
     <style>
         /* Estilos para las filas */
@@ -102,8 +105,10 @@
             </div>
         </div>
     </div>
+    <div id="modalBackground" class="modal-background"></div>
 
     <script>
+
         // Función para abrir/cerrar el menú lateral
         function toggleMenu() {
             const menuLateral = document.querySelector('.menu-lateral');

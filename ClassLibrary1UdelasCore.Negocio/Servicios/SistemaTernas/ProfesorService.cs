@@ -1,8 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Udelascore.Negocio.Data;
 using Udelascore.Negocio.Models.BancoDeDatos;
+using UdelasCore.Negocio.Helpers;
 
-namespace Udelascore.Negocio.Servicios.SistemaTernas
+namespace UdelasCore.Negocio.Servicios.SistemaTernas
 {
     public class ProfesorService
     {
@@ -11,34 +17,19 @@ namespace Udelascore.Negocio.Servicios.SistemaTernas
         {
             _context = context;
         }
-        public async Task<List<BdProfesor>> GetAllProfesoresAsync()
+
+        public async Task<BdProfesor?> GetProfesorByCedulaAsync(string cedula)
         {
+            if (string.IsNullOrWhiteSpace(cedula))
+                return null;
+
+            cedula = FormatearCedula.FormatearCedulaPanama(cedula);
+
+            //Buscar la cedula mediante la cedula larga, anteriormente formateada
             return await _context.BdProfesor
-                .Take(10)
-                .ToListAsync();
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.Cedula == cedula);
         }
-        public async Task<BdProfesor> GetProfesorByCedulaAsync(string cedula)
-        {
-            return await _context.BdProfesor.FirstOrDefaultAsync(p => p.Cedula == cedula);
-        }
-        public async Task AddProfesorAsync(BdProfesor profesor)
-        {
-            _context.BdProfesor.Add(profesor);
-            await _context.SaveChangesAsync();
-        }
-        public async Task UpdateProfesorAsync(BdProfesor profesor)
-        {
-            _context.BdProfesor.Update(profesor);
-            await _context.SaveChangesAsync();
-        }
-        public async Task DeleteProfesorAsync(string cedula)
-        {
-            var profesor = await GetProfesorByCedulaAsync(cedula);
-            if (profesor != null)
-            {
-                _context.BdProfesor.Remove(profesor);
-                await _context.SaveChangesAsync();
-            }
-        }
+
     }
 }
