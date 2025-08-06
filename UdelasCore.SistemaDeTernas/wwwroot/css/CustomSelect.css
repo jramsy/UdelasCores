@@ -1,0 +1,109 @@
+﻿.custom-select {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.custom-select-trigger {
+    border: 1px solid #ccc;
+    padding: 8px;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.custom-select-dropdown {
+    border-radius: 10px;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    max-height: 250px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    min-width: 250px; /* O usa width: 100%; según tu diseño */
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+    .custom-select-dropdown.show {
+        display: block;
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Opcional: Estilizar scrollbar si quieres */
+    .custom-select-dropdown::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .custom-select-dropdown::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.1);
+        border-radius: 4px;
+    }
+
+.custom-select-option {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.custom-select-option:hover {
+    background: #f0f0f0;
+}
+
+.custom-select-option.selected {
+    background: #d0eaff;
+}
+
+.custom-select-option.disabled {
+    pointer-events: none;
+}
+
+.select-tag {
+    display: inline-block;
+    background: #e0e0e0;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin: 2px;
+    font-size: 12px;
+}
+
+.select-tag-remove {
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+/* Opcional: Ajusta el contenedor de búsqueda para que no se vea tan encajonado */
+.custom-select-search {
+    padding: 8px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+    /* Input búsqueda: */
+    .custom-select-search input[type="text"] {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        outline-offset: 2px;
+        transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        /* Evitar scroll interno */
+        overflow: visible;
+        height: 36px; /* Tamaño más estándar */
+    }
+
+        .custom-select-search input[type="text"]:focus {
+            border-color: #2684ff;
+            box-shadow: 0 0 4px rgba(38, 132, 255, 0.5);
+        }
+
+

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Udelascore.Negocio.Models.RecursosHumanos;
 
@@ -23,6 +24,8 @@ namespace UdelasCore.Negocio.Modelos.RecursosHumanos
         public int IdUsuarioCreador { get; set; } = 0;
         public int IdUsuarioModificador { get; set; } = 0;
         public int IdUsuarioBorrador { get; set; } = 0;
+        [DefaultValue(false)]
+        public bool Borrado { get; set; } = false;
 
         // Fecha de creación al momento de instanciar
         public DateTime FechaCreacion { get; set; } = DateTime.Now;

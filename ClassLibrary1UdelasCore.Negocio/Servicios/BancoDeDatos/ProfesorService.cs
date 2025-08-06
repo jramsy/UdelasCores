@@ -8,7 +8,7 @@ using Udelascore.Negocio.Data;
 using Udelascore.Negocio.Models.BancoDeDatos;
 using UdelasCore.Negocio.Helpers;
 
-namespace UdelasCore.Negocio.Servicios.SistemaTernas
+namespace UdelasCore.Negocio.Servicios.BancoDeDatos
 {
     public class ProfesorService
     {

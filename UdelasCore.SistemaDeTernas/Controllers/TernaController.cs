@@ -1,18 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using UdelasCore.Negocio.Servicios.SistemaTernas;
 using UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs;
-using UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs.TernaDetalles;
 using UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs.Ternas;
+using UdelasCore.Negocio.Servicios.BancoDeDatos;
+using Udelascore.Negocio.Models.BancoDeDatos;
+using UdelasCore.Negocio.Servicios.RecursosHumanos;
+using UdelasCore.Negocio.DTOs;
 
 namespace SistemaTernas.Controllers
 {
     public class TernaController : Controller
     {
         private readonly TernaService _ternaService;
+        private readonly ExtensionService _extensionService;
 
-        public TernaController(TernaService ternaService)
+        public TernaController(TernaService ternaService, ExtensionService extensionService)
         {
             _ternaService = ternaService;
+            _extensionService = extensionService;
         }
 
         public async Task<IActionResult> Index()
@@ -33,6 +37,18 @@ namespace SistemaTernas.Controllers
             ViewBag.Ternas = ternasAprobadas;
 
             return View("HistorialAprobadas");
+        }
+
+        public async Task<IActionResult> RegistroTerna()
+        {
+            List<ObtainTernasDTO> ternas = await _ternaService.GetAllTernasAsync();
+
+            List<Extensiones> extensiones = await _extensionService.GetExtensionsAsync();
+
+            ViewBag.Ternas = ternas;
+            ViewBag.Extensiones = extensiones;
+
+            return View("RegistroTerna");
         }
 
 
@@ -59,5 +75,51 @@ namespace SistemaTernas.Controllers
             return Ok(new { message = "Detalle de terna actualizado correctamente." });
 
         }
+
+        [HttpPost("api/terna")]
+        public async Task<IActionResult> CrearEditarTerna([FromBody] TernaRequestDto request)
+        {
+            if (request.Terna == null && request.Detalle == null)
+            {
+                return BadRequest(new { message = "Debe enviar al menos la terna o el detalle." });
+            }
+
+            try
+            {
+                var terna = await _ternaService.CreateOrUpdateTernaAsync(request.Terna, request.Detalle);
+                return Ok(new { message = "Operación completada con éxito.", terna });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error interno", error = ex.Message });
+            }
+        }
+
+        [HttpDelete("api/terna/{id}")]
+        public async Task<IActionResult> DeleteTerna(int id)
+        {
+            var eliminado = await _ternaService.DeleteTernaAsync(id, 1);
+
+            if (!eliminado)
+            {
+                return NotFound(new { mensaje = $"No se encontró ninguna terna con ID {id} para eliminar." });
+            }
+
+            return Ok(new { mensaje = "Terna eliminada correctamente." });
+        }
+
+        [HttpDelete("api/terna-detalle/{id}")]
+        public async Task<IActionResult> DeleteTernaDetalle(int id)
+        {
+            var eliminado = await _ternaService.DeleteTernaDetalleAsync(id, 1);
+
+            if (!eliminado)
+            {
+                return NotFound(new { mensaje = $"No se encontró ninguna terna con ID {id} para eliminar." });
+            }
+
+            return Ok(new { mensaje = "Terna eliminada correctamente." });
+        }
+
     }
 }

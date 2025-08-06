@@ -1,9 +1,11 @@
+wwwroot\css\CustomSelect.css
 wwwroot\css\site.css
 wwwroot\css\Style_NuevoRegistroTernas.css
 wwwroot\css\styleplantilla.css
 wwwroot\css\StyleRender.css
 wwwroot\favicon.ico
 wwwroot\images\logoUdelas.png
+wwwroot\js\CustomSelect.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

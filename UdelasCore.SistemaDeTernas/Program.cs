@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using Udelascore.Negocio.Data;
 using UdelasCore.Negocio.Data;
-using UdelasCore.Negocio.Servicios.SistemaTernas;
+using UdelasCore.Negocio.Servicios.BancoDeDatos;
+using UdelasCore.Negocio.Servicios.HorariosDocencia;
+using UdelasCore.Negocio.Servicios.RecursosHumanos;
 using UdelasCore.SistemaDeTernas.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +25,17 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<TernaService>();
 builder.Services.AddScoped<ProfesorService>();
+builder.Services.AddScoped<FacultadService>();
+builder.Services.AddScoped<ExtensionService>();
+builder.Services.AddScoped<SemMatService>();
+builder.Services.AddScoped<MateriasPorCarreraService>();
+builder.Services.AddScoped<CarreraService>();
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+{
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    x.JsonSerializerOptions.WriteIndented = true;
+});
 
 var app = builder.Build();
 
@@ -32,6 +46,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

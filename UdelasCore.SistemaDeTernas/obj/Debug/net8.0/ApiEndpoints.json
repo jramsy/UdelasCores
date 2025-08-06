@@ -1,1 +1,55 @@
-[]
+[
+  {
+    "ContainingType": "UdelasCore.SistemaDeTernas.Controllers.AsignaturaController",
+    "Method": "Get",
+    "RelativePath": "api/Asignatura",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "codCarrera",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UdelasCore.SistemaDeTernas.Controllers.CarreraController",
+    "Method": "Get",
+    "RelativePath": "api/Carrera",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UdelasCore.SistemaDeTernas.Controllers.ProfesorController",
+    "Method": "GetProfesorByCedula",
+    "RelativePath": "api/Profesor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cedula",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

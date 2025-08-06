@@ -40,7 +40,9 @@ function mostrarAlerta({
         icon: icono,
         showCancelButton: showCancelButton,
         confirmButtonText: confirmButtonText,
-        cancelButtonText: cancelButtonText
+        cancelButtonText: cancelButtonText,
+        cancelButtonColor: '#ff0000',
+        confirmButtonColor: '#008000'
     }).then((result) => {
         if (result.isConfirmed && typeof callback === 'function') {
             callback(); // Ejecuta la función si se confirma

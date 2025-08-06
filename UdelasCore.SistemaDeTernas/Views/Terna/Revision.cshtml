@@ -2,7 +2,14 @@
 @{
     ViewData["Title"] = "Revisión de Ternas";
 
-    var ternas = ViewBag.Ternas as List<ObtainTernasDTO>;
+    var ternas = (ViewBag.Ternas as List<ObtainTernasDTO>)
+        ?.OrderBy(t =>
+            t.EstadoNombre == "PENDIENTE" ? 0 :
+            t.EstadoNombre == "RECHAZADO" ? 1 :
+            2 // Aprobado u otros
+        ).ThenBy(t => t.Anio)
+        .ThenBy(t => t.NomPeriodo)
+        .ToList();
 }
 
 <!-- Sidebar + Contenido -->
@@ -85,7 +92,9 @@
                                             <td><span class="estado @terna.EstadoNombre.ToLower()">@terna.EstadoNombre</span></td>
                                             <td>
                                                 <div style="display: flex; gap: 8px; justify-content: center; align-items: center;">
-                                                    <button onclick="verTerna('@terna.IdTerna', '@terna.IdEstado')" style="color: #0d6efd; text-decoration: underline; cursor: pointer; font-size: 13px; font-weight: 500;">Ver Detalle</button>
+                                                    <button onclick="verTerna('@terna.IdTerna', '@terna.IdEstado')" style="color: #0d6efd; text-decoration: underline; cursor: pointer; font-size: 13px; font-weight: 500; background: none; border: none;">
+                                                        <i class="fas fa-folder" style="color: gold; margin-right: 5px;"></i>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -106,7 +115,7 @@
 <div id="modalLicenciatura" class="modal">
     <div class="fila">
         <div class="columna blanco">
-            <input type="type" name="name" value="" id="IdTerna"/>
+            <input type="text" name="name" value="" id="IdTerna"/>
             <div class="tarjeta-header">
                 <span class="close-modal" onclick="cerrarModal('modalLicenciatura')">&times;</span>
                 <h5><i class="fas fa-info-circle"></i> Detalle de Terna TRN-001</h5>
@@ -251,6 +260,9 @@
 
         window.verTerna = verTerna;
         window.updateTernaDetalle = updateTernaDetalle;
+
     });
+
+
 </script>
 

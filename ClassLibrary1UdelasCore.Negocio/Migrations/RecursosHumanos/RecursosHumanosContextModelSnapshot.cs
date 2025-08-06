@@ -54,10 +54,6 @@ namespace UdelasCore.Negocio.Migrations
                     b.Property<int>("CodMateria")
                         .HasColumnType("int");
 
-                    b.Property<string>("ColorEstado")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -76,6 +72,9 @@ namespace UdelasCore.Negocio.Migrations
                     b.Property<DateOnly>("FechaInicio")
                         .HasColumnType("date");
 
+                    b.Property<int>("IdEstado")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdTerna")
                         .HasColumnType("int");
 
@@ -85,6 +84,86 @@ namespace UdelasCore.Negocio.Migrations
 
                     b.Property<int>("Periodo")
                         .HasColumnType("int");
+
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
+                });
+
+            modelBuilder.Entity("UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs.TernaDetalleProfesorDTO", b =>
+                {
+                    b.Property<string>("Apellido")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CedDocente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cedula")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CedulaEstudio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Celular")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Cod_Tipo_Estudio")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Cod_prof")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("DireccionEstudio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HabilitadoEstudio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdEstado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdEstudio")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdTerna")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdTernaDetalle")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre_Estudio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Provincia")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProvinciaEstudio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PuntajeEstudio")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Turnom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.ToTable((string)null);
 
@@ -101,10 +180,6 @@ namespace UdelasCore.Negocio.Migrations
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -123,12 +198,12 @@ namespace UdelasCore.Negocio.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdTernaDetalle"));
 
+                    b.Property<bool>("Borrado")
+                        .HasColumnType("bit");
+
                     b.Property<string>("CedDocente")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("EstadoIdEstado")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaBorrador")
                         .HasColumnType("datetime2");
@@ -154,14 +229,11 @@ namespace UdelasCore.Negocio.Migrations
                     b.Property<int>("IdUsuarioModificador")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TernaIdTerna")
-                        .HasColumnType("int");
-
                     b.HasKey("IdTernaDetalle");
 
-                    b.HasIndex("EstadoIdEstado");
+                    b.HasIndex("IdEstado");
 
-                    b.HasIndex("TernaIdTerna");
+                    b.HasIndex("IdTerna");
 
                     b.ToTable("TernaDetalles");
                 });
@@ -4661,14 +4733,18 @@ namespace UdelasCore.Negocio.Migrations
                     b.Property<int>("Anio")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("Borrado")
+                        .HasColumnType("bit");
+
                     b.Property<int>("CodCarrera")
                         .HasColumnType("int");
 
                     b.Property<int>("CodMateria")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EstadoIdEstado")
-                        .HasColumnType("int");
+                    b.Property<int>("EstadoIdEstado")
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoIdEstado");
 
                     b.Property<DateTime?>("FechaBorrador")
                         .HasColumnType("datetime2");
@@ -5639,11 +5715,15 @@ namespace UdelasCore.Negocio.Migrations
                 {
                     b.HasOne("UdelasCore.Negocio.Modelos.RecursosHumanos.Estado", "Estado")
                         .WithMany()
-                        .HasForeignKey("EstadoIdEstado");
+                        .HasForeignKey("IdEstado")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Udelascore.Negocio.Models.RecursosHumanos.Terna", "Terna")
                         .WithMany("TernaDetalles")
-                        .HasForeignKey("TernaIdTerna");
+                        .HasForeignKey("IdTerna")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Estado");
 
@@ -5745,7 +5825,9 @@ namespace UdelasCore.Negocio.Migrations
                 {
                     b.HasOne("UdelasCore.Negocio.Modelos.RecursosHumanos.Estado", "Estado")
                         .WithMany()
-                        .HasForeignKey("EstadoIdEstado");
+                        .HasForeignKey("EstadoIdEstado")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Estado");
                 });

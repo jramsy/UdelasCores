@@ -42,18 +42,10 @@
                 {
                     Titulo = "Registro",
                     Icon = "fa-solid fa-file",
-                    AspController = "Home",
-                    AspAction = "Index",
-                    Roles = new List<string> {"Creador" }
-                },
-                new MenuItem
-                {
-                    Titulo = "Historial",
-                    Icon = "home",
-                    AspController = "Home",
-                    AspAction = "Index",
-                    Roles = new List<string> {"Creador" }
-                },
+                    AspController = "Terna",
+                    AspAction = "RegistroTerna",
+                    Roles = new List<string> {"Creador", "Rectora"}
+                }
             };
         }
     }

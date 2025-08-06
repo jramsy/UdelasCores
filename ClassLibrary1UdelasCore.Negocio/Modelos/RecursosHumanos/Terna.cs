@@ -36,7 +36,7 @@ namespace Udelascore.Negocio.Models.RecursosHumanos
         public int IdUsuarioCreador { get; set; } = 0;
         public int IdUsuarioModificador { get; set; } = 0;
         public int IdUsuarioBorrador { get; set; } = 0;
-
+        public bool? Borrado { get; set; } = false; // Indica si la terna está marcada como borrada
         // Fechas de creación y modificación
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public DateTime? FechaModificacion { get; set; } = null; // Puede ser null hasta que se modifique

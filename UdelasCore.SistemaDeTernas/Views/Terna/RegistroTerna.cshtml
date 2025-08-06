@@ -1,0 +1,566 @@
+﻿@using UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs
+@using Udelascore.Negocio.Models.BancoDeDatos
+@{
+    var extensiones = ViewBag.Extensiones as List<Extensiones>;
+
+    var ternas = (ViewBag.Ternas as List<ObtainTernasDTO>)
+        ?.OrderBy(t =>
+            t.EstadoNombre == "PENDIENTE" ? 0 :
+            t.EstadoNombre == "RECHAZADO" ? 1 :
+            2 // Aprobado u otros
+        ).ThenBy(t => t.Anio)
+        .ThenBy(t => t.NomPeriodo)
+        .ToList();
+}
+
+<!-- Página -->
+<div class="container-pagina">
+    <!-- Filtros -->
+    <div class="fila">
+        <div class="columna blanco">
+            <div class="tarjeta-header">
+                <!-- Título -->
+                <h5><i class="fa-solid fa-file"></i> Ternas</h5>
+            </div>
+
+            <div class="tarjeta-cuerpo">
+                <!-- Filtros de Búsqueda -->
+                <div class="search-container"
+                     style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-start;">
+
+                    <!-- Select de Año -->
+                    <select id="selectAnio">
+                        <option value="">Año</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <!-- Agrega más años si deseas -->
+                    </select>
+
+                    <!-- Select de Carrera -->
+                    <select id="selectCarrera">
+                        <option value="">Carrera</option>
+                        <option value="Medicina">Medicina</option>
+                        <option value="Enfermería">Enfermería</option>
+                        <option value="Ingeniería">Ingeniería</option>
+                        <!-- Más carreras -->
+                    </select>
+
+                    <!-- Select de Semestre -->
+                    <select id="selectSemestre">
+                        <option value="">Semestre</option>
+                        <option value="1">1° Semestre</option>
+                        <option value="2">2° Semestre</option>
+                        <option value="3">3° Semestre</option>
+                        <!-- Más si aplica -->
+                    </select>
+
+                    <!-- Select de Facultad -->
+                    <select id="selectFacultad">
+                        <option value="">Facultad</option>
+                        <option value="Salud">Facultad de Salud</option>
+                        <option value="Ingeniería">Facultad de Ingeniería</option>
+                        <option value="Educación">Facultad de Educación</option>
+                        <!-- Más facultades -->
+                    </select>
+
+
+                    <!-- Botón de búsqueda -->
+                    <button onclick="filtrar()" style="white-space: nowrap;">Buscar</button>
+                    <button onclick="limpiarFiltros()">Limpiar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla principal -->
+    <div class="fila">
+        <div class="columna blanco">
+            <div class="tarjeta-header">
+                <h5><i class="fas fa-file-alt"></i> Ternas Registradas</h5>
+                <i class="fa-solid fa-plus icono-margen" onclick="abrirModal('modalTernaInfo'); inpTernaId.value = 0; cargarDetallesTerna(0)"> Agregar</i>
+            </div>
+            <div class="tarjeta-cuerpo">
+                <div class="table-container">
+                    <table id="tablaTernas">
+                        <thead>
+                            <tr>
+                                <th><i class="fa-solid fa-arrow-down-9-1"></i> N° Terna</th>
+                                <th><i class="fa-solid fa-building-columns"></i> Año</th>
+                                <th><i class="fa-solid fa-graduation-cap"></i> Semestre</th>
+                                <th><i class="fa-solid fa-book-open"></i> Facultad</th>
+                                <th><i class="fa-solid fa-book-open"></i> Carrera</th>
+                                <th><i class="fa-solid fa-play"></i> Asignatura</th>
+                                <th><i class="fa-solid fa-play"></i> Inicia</th>
+                                <th><i class="fa-solid fa-list"></i> Culmina</th>
+                                <th><i class="fas fa-info-circle"></i> Estatus</th>
+                                <th><i class="fas fa-cog"></i> Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ternas.Count() > 0)
+                            {
+                                @foreach (var terna in ternas)
+                                {
+                                    <tr>
+                                        <td>@terna.IdTerna</td>
+                                        <td>@terna.Anio</td>
+                                        <td>@terna.NomPeriodo</td>
+                                        <td>@terna.Facultad</td>
+                                        <td>@terna.Carrera</td>
+                                        <td>@terna.Descripcion</td>
+
+                                        <td>@terna.FechaInicio</td>
+                                        <td>@terna.FechaFinal</td>
+                                        <td><span class="estado @terna.EstadoNombre.ToLower()">@terna.EstadoNombre</span></td>
+                                        <td>
+                                            <div style="display: flex; gap: 8px; justify-content: center; align-items: center;">
+                                                <button onclick="cargarDetallesTerna('@terna.IdTerna', '@terna.IdEstado'); abrirModal('modalTernaInfo')" style="color: #0d6efd; text-decoration: underline; cursor: pointer; font-size: 13px; font-weight: 500; background: none; border: none;">
+                                                        <i class="fas fa-folder" style="color: gold; margin-right: 5px;"></i>
+                                                    </button>
+                                                <button onclick="eliminarTerna('@terna.IdTerna')" style="color: #0d6efd; text-decoration: underline; cursor: pointer; font-size: 13px; font-weight: 500; background: none; border: none;">
+                                                    <i class="fas fa-trash" style="color: red; margin-right: 5px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalBackground" class="modal-background"></div>
+
+    <div id="modalTernaInfo" class="modal">
+        <div class="fila">
+            <div class="columna blanco">
+                <input type="text" id="idTerna" value="0" />
+                <div class="tarjeta-header">
+                    <span class="close-modal" onclick="cerrarModal('modalTernaInfo')">&times;</span>
+                    <h5><i class="fa-solid fa-user-graduate"></i> Registrar</h5>
+                </div>
+
+                <div class="tarjeta-cuerpo">
+
+                    <div class="from-grupos">
+                        <label for="sede">Sede:</label>
+                        <select id="sede" required>
+                            @foreach (var ext in extensiones)
+                            {
+                                <option>@ext.Sede</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="from-grupos">
+                        <label for="anio">Año:</label>
+                        <select id="anio" required>
+                            @for (int year = DateTime.Now.Year; year <= DateTime.Now.AddYears(1).Year; year++)
+                            {
+                                <option>@year</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="from-grupos">
+                        <label for="carrera">Carrera:</label>
+                        <select id="select-carreras" required>
+                        </select>
+                    </div>
+
+                    <div class="from-grupos">
+                        <label for="asignatura">Asignatura:</label>
+                        <select id="select-asignatura" required>
+                        </select>
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="date-fecha-inicio">Fecha de inicio:</label>
+                        <input type="date" id="date-fecha-inicio" class="form-control" name="fechaInicio" required />
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="date-fecha-culmina">Fecha final:</label>
+                        <input type="date" id="date-fecha-culmina" class="form-control" name="fechaFinal" required />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Datos Docente -->
+        <div class="fila">
+            <div class="columna blanco">
+                <div class="tarjeta-header">
+                    <h5><i class="fas fa-file-alt"></i> Datos Docentes</h5>
+                </div>
+                <div class="tarjeta-cuerpo">
+
+                    <div class="fila-form">
+                        <div class="grupo-input">
+                            <label for="cedulaDocente">Cédula:</label>
+                            <div class="input-con-icono">
+                                <input type="text" id="cedulaDocente" class="form-control">
+                                <button type="button" class="btn-buscar" onclick="buscarDocente()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="grupo-input">
+                            <label for="nombreDocente">Nombre:</label>
+                            <input type="text" id="nombreDocente" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="fila-form">
+                        <div class="grupo-input">
+                            <label for="facultadDocente">Facultad:</label>
+                            <input type="text" id="facultadDocente" class="form-control" readonly>
+                        </div>
+                        <div class="grupo-input">
+                            <label for="experienciaDocente">Años de experiencia:</label>
+                            <input type="text" id="experienciaDocente" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="justify-button-file">
+                        <button type="button" class="btn btn-guardar" onclick="guardarDocente()">
+                            <i class="fas fa-save"></i> Agregar Docente
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tabla en Modal -->
+        <div class="fila">
+            <div class="columna blanco">
+                <div class="tarjeta-header">
+                    <h5><i class="fas fa-file-alt"></i> Ternas Registradas</h5>
+                </div>
+                <div class="tarjeta-cuerpo">
+                    <div class="table-container">
+                        <table id="tablaDocentesModal">
+                            <thead>
+                                <tr>
+                                    <th><i class="fa-solid fa-building-columns"></i> Cédula</th>
+                                    <th><i class="fa-solid fa-graduation-cap"></i> Nombre</th>
+                                    <th><i class="fa-solid fa-book-open"></i> Licenciatura</th>
+                                    <th><i class="fas fa-cog"></i> Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Fin Modal -->
+</div>
+
+<script>
+    const selectElement = document.getElementById('select-carreras');
+    const selectMaterias = document.getElementById('select-asignatura');
+    const inpTernaId = document.getElementById('idTerna');
+    const inpFechaInicio = document.getElementById("date-fecha-inicio")
+    const inpFechaCulmina = document.getElementById("date-fecha-culmina")
+
+    const customSelectMaterias = new CustomSelect(selectMaterias, {
+        ajax: async function (query) {
+            if (!query || query.length < 2) {
+                return [];
+            }
+            try {
+                const codCarrera = customCarreras.getValue();
+                const response = await fetch(`/api/asignatura?search=${encodeURIComponent(query)}&codCarrera=${encodeURIComponent(codCarrera)}`);
+                if (!response.ok) throw new Error(`Error en la respuesta: ${response.statusText}`);
+                const data = await response.json();
+                return data.map(item => ({
+                    id: item.codMateria,
+                    text: item.codMateria + "-" + item.descripcion
+                }));
+            } catch (error) {
+                console.error('Error cargando opciones de asignaturas:', error);
+                return [];
+            }
+        },
+        minimumInputLength: 2
+    });
+
+    const customCarreras = new CustomSelect(selectElement, {
+        ajax: async function (query) {
+            if (!query || query.length < 2) {
+                return [];
+            }
+            try {
+                const response = await fetch(`/api/carrera?search=${encodeURIComponent(query)}`);
+                if (!response.ok) throw new Error(`Error en la respuesta: ${response.statusText}`);
+                const data = await response.json();
+                return data.map(item => ({
+                    id: item.codCarrera,
+                    text: `${item.codCarrera} - ${item.carrera} - ${item.planCarrera} - ${item.acuerdo}`
+                }));
+            } catch (error) {
+                console.error('Error cargando opciones de carreras:', error);
+                return [];
+            }
+        },
+        minimumInputLength: 2
+    });
+
+    async function buscarDocente() {
+        const cedula = document.getElementById('cedulaDocente').value.trim();
+
+        if (!cedula) {
+            mostrarAlerta({ texto: "Por favor ingresa una cédula.", icono: 'warning' });
+            return;
+        }
+
+        try {
+            const response = await fetch(`/api/Profesor?cedula=${encodeURIComponent(cedula)}`);
+
+            if (!response.ok) {
+                if (response.status === 404) {
+                    mostrarAlerta({ texto: "Docente no encontrado.", icono: 'warning' });
+                } else {
+                    mostrarAlerta({ texto: "Ocurrió un error al buscar el docente.", icono: 'error' });
+                }
+                return;
+            }
+
+            const data = await response.json();
+            const annoIngreso = data.annoIngreso || null;
+
+            let aniosExperiencia = '';
+            if (annoIngreso) {
+                const anioActual = new Date().getFullYear();
+                aniosExperiencia = anioActual - parseInt(annoIngreso);
+            }
+
+            document.getElementById('nombreDocente').value = data.nombre + ' ' + data.apellido || '';
+            document.getElementById('facultadDocente').value = data.facultad || '';
+            document.getElementById('experienciaDocente').value = aniosExperiencia;
+
+        } catch (error) {
+            console.error("Error al buscar docente:", error);
+            mostrarAlerta({ texto: "Error de red o servidor.", icono: 'error' });
+        }
+    }
+
+    async function guardarDocente() {
+        const codCarrera = customCarreras.getValue();
+        const codMateria = customSelectMaterias.getValue();
+        const anio = document.getElementById("anio").value;
+        const cedulaDocente = document.getElementById("cedulaDocente").value;
+        const idTerna = inpTernaId.value || 0;
+        const fechaInicio = inpFechaInicio.value
+        const fechaCulmina = inpFechaCulmina.value
+
+        if (!codCarrera || !codMateria || !anio || !cedulaDocente || !fechaInicio || !fechaCulmina) {
+            mostrarAlerta({ texto: "Completa todos los campos obligatorios.", icono: 'warning' });
+            return;
+        }
+
+        const requestBody = {
+            terna: {
+                idTerna: idTerna,
+                codMateria: parseInt(codMateria),
+                anio: parseInt(anio),
+                codCarrera: parseInt(codCarrera),
+                idUsuarioCreador: 1,
+                estadoIdEstado: 1,
+                fechaInicio,
+                fechaCulmina
+            },
+            detalle: {
+                idTernaDetalle: 0,
+                idTerna: idTerna,
+                cedDocente: cedulaDocente,
+                idEstado: 1,
+                idUsuarioCreador: 1,
+                fechaCreacion: new Date().toISOString()
+            }
+        };
+
+        try {
+            const response = await fetch("/api/terna", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                console.error("Error:", error);
+                mostrarAlerta({ texto: error.error, icono: 'error' });
+                return;
+            }
+
+            const result = await response.json();
+            mostrarAlerta({
+                texto: "Terna creada correctamente.",
+                icono: "success"
+            });
+            inpTernaId.value = result.terna.idTerna
+            await cargarDetallesTerna(result.terna.idTerna);
+
+        } catch (error) {
+            console.error("Error al guardar la terna:", error);
+            mostrarAlerta({ texto: "Error de red.", icono: 'error' });
+        }
+    }
+
+    async function cargarDetallesTerna(idTerna) {
+        const tbody = document.querySelector("#tablaDocentesModal tbody");
+        tbody.innerHTML = ""; // Limpiar la tabla antes de cargar
+
+        if (!idTerna || idTerna == 0) return; // No hay terna creada aún
+
+        inpTernaId.value = idTerna
+
+        try {
+            const response = await fetch(`/api/terna/${idTerna}/detalles`);
+
+            if (!response.ok) {
+                console.warn("No hay detalles para la terna.");
+                return;
+            }
+
+            const detalles = await response.json();
+
+            if (!detalles || detalles.length === 0) {
+                const row = `<tr><td colspan="4" style="text-align:center;">Sin docentes asignados</td></tr>`;
+                tbody.innerHTML = row;
+                return;
+            }
+
+            for (const docente of detalles) {
+                const row = `
+                    <tr>
+                        <td>${docente.cedDocente}</td>
+                        <td>${docente.nombre || ''} ${docente.apellido || ''}</td>
+                        <td>${docente.carrera || ''}</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="eliminarTernaDetalle(${docente.idTernaDetalle})">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML("beforeend", row);
+            }
+        } catch (error) {
+            console.error("Error cargando detalles de terna:", error);
+        }
+    }
+
+    async function eliminarTerna(IdTerna) {
+        mostrarAlerta({
+            titulo: '¿Estás seguro?',
+            texto: 'Esta acción no se puede deshacer.',
+            icono: 'warning',
+            confirmButtonText: 'Sí, eliminar',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            callback: async () => {
+                try {
+                    const response = await fetch(`/api/terna/${IdTerna}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        mostrarAlerta({
+                            titulo: '¡Eliminado!',
+                            texto: data.mensaje || 'Terna eliminada correctamente.',
+                            icono: 'success',
+                            callback: () => window.location.reload()
+                        });
+                        // Aquí puedes actualizar la UI, como eliminar una fila
+                    } else if (response.status === 404) {
+                        const errorData = await response.json();
+                        mostrarAlerta({
+                            titulo: 'No encontrado',
+                            texto: errorData.mensaje || 'Terna no encontrada.',
+                            icono: 'warning'
+                        });
+                    } else {
+                        mostrarAlerta({
+                            titulo: 'Error',
+                            texto: 'Error al eliminar la terna.',
+                            icono: 'error'
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error eliminando la terna:', error);
+                    mostrarAlerta({
+                        titulo: 'Error',
+                        texto: 'Ocurrió un error inesperado.',
+                        icono: 'error'
+                    });
+                }
+            }
+        });
+    }
+
+    async function eliminarTernaDetalle(idTernaDetalle) {
+        mostrarAlerta({
+            titulo: '¿Estás seguro?',
+            texto: 'Esta acción no se puede deshacer.',
+            icono: 'warning',
+            confirmButtonText: 'Sí, eliminar',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            callback: async () => {
+                try {
+                    const response = await fetch(`/api/terna-detalle/${idTernaDetalle}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        mostrarAlerta({
+                            titulo: '¡Eliminado!',
+                            texto: data.mensaje || 'Detalle de terna eliminado correctamente.',
+                            icono: 'success',
+                            callback: cargarDetallesTerna(inpTernaId.value)
+                        });
+                    } else if (response.status === 404) {
+                        const errorData = await response.json();
+                        mostrarAlerta({
+                            titulo: 'No encontrado',
+                            texto: errorData.mensaje || 'Detalle de terna no encontrado.',
+                            icono: 'warning'
+                        });
+                    } else {
+                        mostrarAlerta({
+                            titulo: 'Error',
+                            texto: 'Error al eliminar el detalle de la terna.',
+                            icono: 'error'
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error eliminando el detalle de la terna:', error);
+                    mostrarAlerta({
+                        titulo: 'Error',
+                        texto: 'Ocurrió un error inesperado.',
+                        icono: 'error'
+                    });
+                }
+            }
+        });
+    }
+
+
+
+</script>
