@@ -1,6 +1,10 @@
-﻿i.fa {
-    display: initial;
+﻿i, a {
+    text-decoration: none;
 }
+
+    i.fa {
+        display: initial;
+    }
 
 /*Estilos de los div*/
 .fila {
@@ -242,6 +246,42 @@ table {
     color: #adb5bd;
     cursor: not-allowed;
 }
+
+.btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0px;
+    transition: all 0.3s ease;
+    background: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+    .btn:hover {
+        transform: scale(1.1);
+        color: white;
+    }
+
+.edit-btn {
+    border: 1px solid #5781ff;
+    color: #5781ff;
+}
+
+    .edit-btn:hover {
+        background-color: #5781ff;
+    }
+
+.send-btn {
+    border: 1px solid #008800;
+    color: #008800;
+}
+
+    .send-btn:hover {
+        background-color: #008800;
+    }
 
 /*fin Estilos de iconos en el td de la tabla*/
 

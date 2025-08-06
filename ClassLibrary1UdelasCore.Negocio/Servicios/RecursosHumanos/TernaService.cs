@@ -8,6 +8,7 @@ using UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs;
 using UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs.TernaDetalles;
 using UdelasCore.Negocio.Modelos.RecursosHumanos.DTOs.Ternas;
 using UdelasCore.Negocio.Servicios.HorariosDocencia;
+using UdelasCore.SistemaDeTernas.DTOs;
 
 namespace UdelasCore.Negocio.Servicios.RecursosHumanos
 {
@@ -26,26 +27,36 @@ namespace UdelasCore.Negocio.Servicios.RecursosHumanos
             _mcpService = mcp;
             _carreraService = carreraService;
         }
-        public async Task<List<ObtainTernasDTO>> GetAllTernasAsync()
+        public async Task<List<ObtainTernasDTO>> GetAllTernasAsync(FiltroTernaDTO? filtro = null)
         {
-            var ternas = await _rhContext.Ternas.Where(t => t.Borrado == false).Include(t => t.Estado)
-                                              .ToListAsync();
+            filtro ??= new FiltroTernaDTO(); // ← asegura que no sea null
 
+            var ternasQuery = _rhContext.Ternas
+                .Where(t => t.Borrado == false)
+                .Include(t => t.Estado)
+                .AsQueryable();
+
+            if (filtro.Anio.HasValue)
+                ternasQuery = ternasQuery.Where(t => t.Anio == filtro.Anio);
+
+            if (filtro.CodCarrera.HasValue)
+                ternasQuery = ternasQuery.Where(t => t.CodCarrera == filtro.CodCarrera.Value);
+
+            var ternas = await ternasQuery.ToListAsync();
 
             var codCarreras = ternas.Select(t => t.CodCarrera).Distinct().ToList();
             var codMaterias = ternas.Select(t => t.CodMateria).Distinct().ToList();
 
             var mpcs = await _mcpService.GetMateriasPorCarreraAsync();
-
             var carreras = await _carreraService.GetCarrerasAsync();
             var facultades = await _facultadService.GetFacultadesAsync();
             var semestres = await _semMatService.GetSemMatAsync();
 
             var resultado = (from t in ternas
-                             join mpc in mpcs on new { t.CodCarrera, t.CodMateria }
-                                 equals new { mpc.CodCarrera, mpc.CodMateria }
+                             join mpc in mpcs on new { t.CodCarrera, t.CodMateria } equals new { mpc.CodCarrera, mpc.CodMateria }
                              join ca in carreras on mpc.CodCarrera equals ca.CodCarrera
                              join fa in facultades on ca.CodFacultad2 equals fa.CodFacultad
+                             where !filtro.CodFacultad.HasValue || fa.CodFacultad == filtro.CodFacultad.Value
                              select new ObtainTernasDTO
                              {
                                  Descripcion = mpc.Descripcion,
@@ -63,9 +74,10 @@ namespace UdelasCore.Negocio.Servicios.RecursosHumanos
                                  IdEstado = t.EstadoIdEstado
                              }).ToList();
 
-
-            return resultado ?? new List<ObtainTernasDTO>();
+            return resultado;
         }
+
+
         public async Task<List<TernaDetalleProfesorDTO>> GetTernasDetalleByIdAsync(int id)
         {
             if (id <= 0)
@@ -239,7 +251,7 @@ namespace UdelasCore.Negocio.Servicios.RecursosHumanos
                     .AnyAsync(td =>
                         td.IdTerna == terna.IdTerna &&
                         td.CedDocente == dtoDetalle.CedDocente &&
-                        td.IdEstado == 1 && 
+                        td.IdEstado == 1 &&
                         td.Borrado == false);
 
                 if (!dtoDetalle.IdTernaDetalle.HasValue || dtoDetalle.IdTernaDetalle == 0)

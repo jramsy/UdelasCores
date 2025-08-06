@@ -6,97 +6,95 @@
 }
 
 <!-- Página -->
-<div class="container-pagina">
-    <!-- Filtro de búsqueda -->
-    <div class="fila">
-        <div class="columna blanco">
-            <div class="tarjeta-header">
-                <!-- Título -->
-                <h5><i class="fa-solid fa-file"></i> Ternas</h5>
-            </div>
-            <div class="tarjeta-cuerpo">
-                <!-- Filtros de Búsqueda -->
-                <div class="search-container">
-                    <input type="text"
-                           id="searchInput"
-                           placeholder="Buscar por Año, Fecha, Materia o Módulo" />
+<!-- Filtro de búsqueda -->
+<div class="fila">
+    <div class="columna blanco">
+        <div class="tarjeta-header">
+            <!-- Título -->
+            <h5><i class="fa-solid fa-file"></i> Ternas</h5>
+        </div>
+        <div class="tarjeta-cuerpo">
+            <!-- Filtros de Búsqueda -->
+            <div class="search-container">
+                <input type="text"
+                       id="searchInput"
+                       placeholder="Buscar por Año, Fecha, Materia o Módulo" />
 
-                    <!-- Filtro: Semestre -->
-                    <select id="filtroSemestre">
-                        <option value="">Todos los semestres</option>
-                        <option value="I Semestre">I Semestre</option>
-                        <option value="II Semestre">II Semestre</option>
-                    </select>
+                <!-- Filtro: Semestre -->
+                <select id="filtroSemestre">
+                    <option value="">Todos los semestres</option>
+                    <option value="I Semestre">I Semestre</option>
+                    <option value="II Semestre">II Semestre</option>
+                </select>
 
 
-                    <!-- Filtro: Facultad -->
-                    <select id="filtroFacultad">
-                        <option value="">Todas las facultades</option>
-                        <option value="Ingeniería">Ingeniería</option>
-                        <option value="Ciencias de la Salud">Ciencias de la Salud</option>
-                        <option value="Ciencias Administrativas">Ciencias Administrativas</option>
-                    </select>
+                <!-- Filtro: Facultad -->
+                <select id="filtroFacultad">
+                    <option value="">Todas las facultades</option>
+                    <option value="Ingeniería">Ingeniería</option>
+                    <option value="Ciencias de la Salud">Ciencias de la Salud</option>
+                    <option value="Ciencias Administrativas">Ciencias Administrativas</option>
+                </select>
 
-                    <!-- Botón buscar -->
-                    <button onclick="filtrar()">Buscar</button>
-                    <button onclick="limpiarFiltros()">Limpiar Filtros</button>
-                </div>
+                <!-- Botón buscar -->
+                <button onclick="filtrar()">Buscar</button>
+                <button onclick="limpiarFiltros()">Limpiar Filtros</button>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Tabla Historial -->
-    <div class="fila">
-        <div class="columna blanco">
-            <div class="tarjeta-header">
-                <h5><i class="fas fa-file-alt"></i> Historial De Aprobados</h5>
-            </div>
-            <div class="tarjeta-cuerpo">
-                <div class="table-container">
-                    <table id="tablaTernas">
-                        <thead>
-                            <tr>
-                                <th><i class="fa-solid fa-arrow-down-9-1"></i> N° Terna</th>
-                                <th><i class="fa-solid fa-graduation-cap"></i> Semestre</th>
-                                <th><i class="fa-solid fa-book-open"></i> Facultad</th>
-                                <th><i class="fa-solid fa-book-open"></i> Año</th>
-                                <th><i class="fa-solid fa-user"></i> Docente</th>
-                                <th><i class="fa-solid fa-book-open"></i> Estado</th>
-                                <th><i class="fa-solid fa-book-open"></i> Documento</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (ternas != null && ternas.Any())
-                            {
-                                foreach (var terna in ternas)
-                                {
-                                    <tr>
-                                        <td>@terna.IdTerna</td>
-                                        <td>@terna.NomPeriodo</td>
-                                        <td>@terna.Facultad</td>
-                                        <td>@terna.Anio</td>
-                                        <td>Docente</td>
-                                        <td>
-                                            <span class="estado @terna.EstadoNombre?.ToLower()">
-                                                @terna.EstadoNombre
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <button class="pdf-icon-button"><i class="fa-solid fa-file"></i></button>
-                                        </td>
-                                    </tr>
-                                }
-                            }
-                            else
+<!-- Tabla Historial -->
+<div class="fila">
+    <div class="columna blanco">
+        <div class="tarjeta-header">
+            <h5><i class="fas fa-file-alt"></i> Historial De Aprobados</h5>
+        </div>
+        <div class="tarjeta-cuerpo">
+            <div class="table-container">
+                <table id="tablaTernas">
+                    <thead>
+                        <tr>
+                            <th><i class="fa-solid fa-arrow-down-9-1"></i> N° Terna</th>
+                            <th><i class="fa-solid fa-graduation-cap"></i> Semestre</th>
+                            <th><i class="fa-solid fa-book-open"></i> Facultad</th>
+                            <th><i class="fa-solid fa-book-open"></i> Año</th>
+                            <th><i class="fa-solid fa-user"></i> Docente</th>
+                            <th><i class="fa-solid fa-book-open"></i> Estado</th>
+                            <th><i class="fa-solid fa-book-open"></i> Documento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ternas != null && ternas.Any())
+                        {
+                            foreach (var terna in ternas)
                             {
                                 <tr>
-                                    <td colspan="5" class="text-center text-muted">No hay ternas disponibles.</td>
+                                    <td>@terna.IdTerna</td>
+                                    <td>@terna.NomPeriodo</td>
+                                    <td>@terna.Facultad</td>
+                                    <td>@terna.Anio</td>
+                                    <td>Docente</td>
+                                    <td>
+                                        <span class="estado @terna.EstadoNombre?.ToLower()">
+                                            @terna.EstadoNombre
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <i class="fa-solid fa-file edit-btn btn"></i>
+                                    </td>
                                 </tr>
                             }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">No hay ternas disponibles.</td>
+                            </tr>
+                        }
 
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

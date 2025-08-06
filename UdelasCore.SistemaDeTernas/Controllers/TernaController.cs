@@ -5,6 +5,7 @@ using UdelasCore.Negocio.Servicios.BancoDeDatos;
 using Udelascore.Negocio.Models.BancoDeDatos;
 using UdelasCore.Negocio.Servicios.RecursosHumanos;
 using UdelasCore.Negocio.DTOs;
+using UdelasCore.SistemaDeTernas.DTOs;
 
 namespace SistemaTernas.Controllers
 {
@@ -19,9 +20,9 @@ namespace SistemaTernas.Controllers
             _extensionService = extensionService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery] FiltroTernaDTO filtro)
         {
-            List<ObtainTernasDTO> ternas = await _ternaService.GetAllTernasAsync();
+            List<ObtainTernasDTO> ternas = await _ternaService.GetAllTernasAsync(filtro);
 
             ViewBag.Ternas = ternas;
 
@@ -39,9 +40,9 @@ namespace SistemaTernas.Controllers
             return View("HistorialAprobadas");
         }
 
-        public async Task<IActionResult> RegistroTerna()
+        public async Task<IActionResult> RegistroTerna([FromQuery] FiltroTernaDTO filtro)
         {
-            List<ObtainTernasDTO> ternas = await _ternaService.GetAllTernasAsync();
+            List<ObtainTernasDTO> ternas = await _ternaService.GetAllTernasAsync(filtro);
 
             List<Extensiones> extensiones = await _extensionService.GetExtensionsAsync();
 
