@@ -27,5 +27,16 @@ namespace UdelasCore.SistemaDeTernas.Controllers
 
             return Ok(carreras.Where(c => c.Carrera.ToLower().Contains(search.ToLower())).ToList());
         }
+
+        [HttpGet("{id}")]
+        async public Task<IActionResult> GetById(int id)
+        {
+            var carrera = await _carreraService.GetCarrerasAsync();
+            if (carrera == null || !carrera.Any(c => c.CodCarrera == id))
+            {
+                return NotFound(new { message = "Carrera no encontrada." });
+            }
+            return Ok(carrera.FirstOrDefault(c => c.CodCarrera == id));
+        }
     }
 }

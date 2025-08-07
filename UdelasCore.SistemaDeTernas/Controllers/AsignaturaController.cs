@@ -27,5 +27,24 @@ namespace UdelasCore.SistemaDeTernas.Controllers
 
             return Ok(resultado);
         }
+
+        [HttpGet("by-id/{id}")]
+        public async Task<IActionResult> GetById(int id, [FromQuery] int codCarrera)
+        {
+            var asignaturas = await _asignaturaService.GetMateriasPorCarreraAsync();
+
+            var resultado = asignaturas
+                .Where(a => a.CodMateria == id && a.CodCarrera == codCarrera)
+                .Select(a => new
+                {
+                    CodMateria = a.CodMateria,
+                    Descripcion = a.Descripcion,
+                    CodCarrera = a.CodCarrera
+                })
+                .FirstOrDefault();
+
+            return Ok(resultado);
+        }
+
     }
 }

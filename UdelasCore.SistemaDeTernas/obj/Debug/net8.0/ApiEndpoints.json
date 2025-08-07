@@ -21,6 +21,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "UdelasCore.SistemaDeTernas.Controllers.AsignaturaController",
+    "Method": "GetById",
+    "RelativePath": "api/Asignatura/by-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "codCarrera",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UdelasCore.SistemaDeTernas.Controllers.CarreraController",
     "Method": "Get",
     "RelativePath": "api/Carrera",
@@ -32,6 +53,22 @@
         "Name": "search",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UdelasCore.SistemaDeTernas.Controllers.CarreraController",
+    "Method": "GetById",
+    "RelativePath": "api/Carrera/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

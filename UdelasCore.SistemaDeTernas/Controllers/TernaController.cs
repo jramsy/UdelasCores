@@ -57,11 +57,18 @@ namespace SistemaTernas.Controllers
         public async Task<IActionResult> ObtenerTernasDetalle(int id)
         {
             var detalles = await _ternaService.GetTernasDetalleByIdAsync(id);
+            var terna = await _ternaService.GetTernaByIdAsync(id);
 
             if (detalles == null || !detalles.Any())
                 return NotFound(new { message = $"No se encontraron detalles para la terna con ID {id}." });
 
-            return Ok(detalles);
+            var ternaResponse = new
+            {
+                Terna = terna,
+                Detalles = detalles
+            };
+
+            return Ok(ternaResponse);
         }
 
         [HttpPut("api/terna/{id}/estado")]

@@ -230,7 +230,7 @@
                 </div>
 
                 <div class="justify-button-file">
-                        <i class="fas fa-save btn send-btn" onclick="guardarDocente()"></i>
+                    <i class="fas fa-save btn send-btn" onclick="guardarDocente()"></i>
                 </div>
             </div>
         </div>
@@ -269,6 +269,9 @@
     const inpFechaInicio = document.getElementById("date-fecha-inicio")
     const inpFechaCulmina = document.getElementById("date-fecha-culmina")
 
+    //Terna forms
+    const selectSede = document.querySelector("#sede")
+    const selectAnio = document.querySelector("#anio")
 
     const customSelectMaterias = new CustomSelect(selectMaterias, {
         ajax: async function (query) {
@@ -433,13 +436,42 @@
                 return;
             }
 
-            const detalles = await response.json();
+            const data = await response.json();
+            const detalles = data.detalles
+            const terna = data.terna
 
             if (!detalles || detalles.length === 0) {
                 const row = `<tr><td colspan="4" style="text-align:center;">Sin docentes asignados</td></tr>`;
                 tbody.innerHTML = row;
                 return;
             }
+
+            selectAnio.value = terna.anio
+            inpFechaCulmina.value = terna.fechaFinal
+            inpFechaInicio.value = terna.fechaInicio
+
+            // Obtener y asignar la materia al CustomSelect de asignaturas
+            // if (terna.codCarrera) {
+            //     const carreraResponse = await fetch(`/api/carrera/${terna.codCarrera}`);
+            //     if (carreraResponse.ok) {
+            //          const materia = await carreraResponse.json();
+            //         customCarreras.setValue({
+            //             id: carrera.codCarrera,
+            //             text: `${carrera.codCarrera} - ${carrera.carrera}`
+            //         });
+            //     }
+            // }
+
+            // if (terna.codMateria) {
+            //     const materiaResponse = await fetch(`/api/asignatura/by-id/${terna.codMateria}?codCarrera=${terna.codCarrera}`);
+            //     if (materiaResponse.ok) {
+            //          const materia = await materiaResponse.json();
+            //         customSelectMaterias.setValue({
+            //             id: materia.codMateria,
+            //             text: `${materia.codMateria} - ${materia.descripcion}`
+            //         });
+            //     }
+            // }
 
             for (const docente of detalles) {
                 const row = `
@@ -554,12 +586,6 @@
                 }
             }
         });
-    }
-
-    
-    function manejarBotonesPermisos(handlerClass)
-    {
-        
     }
 
 
