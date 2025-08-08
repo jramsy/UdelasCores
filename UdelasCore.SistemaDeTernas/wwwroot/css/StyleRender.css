@@ -746,6 +746,45 @@ label {
     justify-content: flex-end;
 }
 
+input[type="date"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+/* Estilo adicional para validación */
+input:invalid {
+    border-color: #dc3545;
+}
+
+input:valid {
+    border-color: #28a745;
+}
+
+/* Placeholder para campos vacíos de fecha */
+input[type="date"]:not(:focus):invalid {
+    color: #999;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+
 /* Estilos mejorados para los inputs */
 .grupo-input input[type="text"],
 .grupo-input input[type="email"],

@@ -17,61 +17,61 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UdelasCore.SistemaDeTernas
 build_property.RootNamespace = UdelasCore.SistemaDeTernas
-build_property.ProjectDir = C:\Users\dabustaman\Desktop\UdelasCores\UdelasCore.SistemaDeTernas\
+build_property.ProjectDir = C:\Users\anlinares\Source\Repos\UdelasCores\UdelasCore.SistemaDeTernas\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\dabustaman\Desktop\UdelasCores\UdelasCore.SistemaDeTernas
+build_property.MSBuildProjectDirectory = C:\Users\anlinares\Source\Repos\UdelasCores\UdelasCore.SistemaDeTernas
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Auth/Login.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Auth/Registro.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Auth/Registro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Ryby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Auth/_Layout.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Auth/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxfTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Home/Index.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Shared/Error.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Terna/HistorialAprobadas.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Terna/HistorialAprobadas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybmFcSGlzdG9yaWFsQXByb2JhZGFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Terna/RegistroTerna.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Terna/RegistroTerna.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybmFcUmVnaXN0cm9UZXJuYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Terna/Revision.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Terna/Revision.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybmFcUmV2aXNpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/_ViewImports.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/_ViewStart.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dabustaman/Desktop/UdelasCores/UdelasCore.SistemaDeTernas/Views/Shared/_Layout.cshtml]
+[C:/Users/anlinares/Source/Repos/UdelasCores/UdelasCore.SistemaDeTernas/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-gdyalf0atm

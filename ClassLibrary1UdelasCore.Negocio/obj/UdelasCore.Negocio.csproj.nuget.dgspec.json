@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dabustaman\\Desktop\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {}
+    "C:\\Users\\anlinares\\Source\\Repos\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dabustaman\\Desktop\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {
+    "C:\\Users\\anlinares\\Source\\Repos\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dabustaman\\Desktop\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
+        "projectUniqueName": "C:\\Users\\anlinares\\Source\\Repos\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
         "projectName": "UdelasCore.Negocio",
-        "projectPath": "C:\\Users\\dabustaman\\Desktop\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
-        "packagesPath": "C:\\Users\\dabustaman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dabustaman\\Desktop\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\obj\\",
+        "projectPath": "C:\\Users\\anlinares\\Source\\Repos\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\UdelasCore.Negocio.csproj",
+        "packagesPath": "C:\\Users\\anlinares\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\anlinares\\Source\\Repos\\UdelasCores\\ClassLibrary1UdelasCore.Negocio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\dabustaman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\anlinares\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

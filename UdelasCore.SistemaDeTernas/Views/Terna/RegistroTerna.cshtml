@@ -27,13 +27,6 @@
             <form method="get" class="search-container"
                   style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-start;">
 
-                <!-- Select de Año -->
-                <select id="selectAnio" name="anio">
-                    <option value="">Año</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                </select>
 
                 <!-- Select de Carrera -->
                 <select id="selectFiltroCarrera" name="carrera">
@@ -41,6 +34,22 @@
                     <option value="Medicina">Medicina</option>
                     <option value="Enfermería">Enfermería</option>
                     <option value="Ingeniería">Ingeniería</option>
+                </select>
+
+                <!-- Select de Facultad -->
+                <select id="selectFiltroFacultad" name="facultad">
+                    <option value="">Facultad</option>
+                    <option value="Salud">Facultad de Salud</option>
+                    <option value="Ingeniería">Facultad de Ingeniería</option>
+                    <option value="Educación">Facultad de Educación</option>
+                </select>
+
+                <!-- Select de Año -->
+                <select id="selectAnio" name="anio">
+                    <option value="">Año</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
                 </select>
 
                 <!-- Select de Semestre -->
@@ -51,13 +60,7 @@
                     <option value="3">3° Semestre</option>
                 </select>
 
-                <!-- Select de Facultad -->
-                <select id="selectFiltroFacultad" name="facultad">
-                    <option value="">Facultad</option>
-                    <option value="Salud">Facultad de Salud</option>
-                    <option value="Ingeniería">Facultad de Ingeniería</option>
-                    <option value="Educación">Facultad de Educación</option>
-                </select>
+            
 
                 <!-- Botón de búsqueda -->
                 <button type="submit" style="white-space: nowrap;">Buscar</button>
@@ -179,12 +182,12 @@
                     </select>
                 </div>
 
-                <div class="grupo-input">
+                <div class="from-grupos">
                     <label for="date-fecha-inicio">Fecha de inicio:</label>
                     <input type="date" id="date-fecha-inicio" class="form-control" name="fechaInicio" required />
                 </div>
 
-                <div class="grupo-input">
+                <div class="from-grupos">
                     <label for="date-fecha-culmina">Fecha final:</label>
                     <input type="date" id="date-fecha-culmina" class="form-control" name="fechaFinal" required />
                 </div>
