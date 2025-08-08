@@ -22,7 +22,7 @@ namespace UdelasCore.SistemaDeTernas.Controllers
 
             var resultado = asignaturas
                 .Where(a =>
-                    (string.IsNullOrEmpty(search) || a.Descripcion.ToLower().Contains(search.ToLower()) && a.CodCarrera == codCarrera)
+                    (string.IsNullOrEmpty(search) || (a.Descripcion.ToLower().Contains(search.ToLower()) || a.CodMateria.ToString().ToLower().Contains(search)) && a.CodCarrera == codCarrera)
                 ).ToList();
 
             return Ok(resultado);

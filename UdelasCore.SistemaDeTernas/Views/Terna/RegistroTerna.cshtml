@@ -36,7 +36,7 @@
                 </select>
 
                 <!-- Select de Carrera -->
-                <select id="selectCarrera" name="carrera">
+                <select id="selectFiltroCarrera" name="carrera">
                     <option value="">Carrera</option>
                     <option value="Medicina">Medicina</option>
                     <option value="Enfermería">Enfermería</option>
@@ -44,7 +44,7 @@
                 </select>
 
                 <!-- Select de Semestre -->
-                <select id="selectSemestre" name="semestre">
+                <select id="selectFiltroSemestre" name="semestre">
                     <option value="">Semestre</option>
                     <option value="1">1° Semestre</option>
                     <option value="2">2° Semestre</option>
@@ -52,7 +52,7 @@
                 </select>
 
                 <!-- Select de Facultad -->
-                <select id="selectFacultad" name="facultad">
+                <select id="selectFiltroFacultad" name="facultad">
                     <option value="">Facultad</option>
                     <option value="Salud">Facultad de Salud</option>
                     <option value="Ingeniería">Facultad de Ingeniería</option>
@@ -263,15 +263,87 @@
 </div> <!-- Fin Modal -->
 
 <script>
-    const selectElement = document.getElementById('select-carreras');
-    const selectMaterias = document.getElementById('select-asignatura');
-    const inpTernaId = document.getElementById('idTerna');
-    const inpFechaInicio = document.getElementById("date-fecha-inicio")
-    const inpFechaCulmina = document.getElementById("date-fecha-culmina")
+    // --- Elementos Generales ---
+        const inpTernaId = document.getElementById('idTerna');
+        const inpFechaInicio = document.getElementById("date-fecha-inicio");
+        const inpFechaCulmina = document.getElementById("date-fecha-culmina");
 
-    //Terna forms
-    const selectSede = document.querySelector("#sede")
-    const selectAnio = document.querySelector("#anio")
+        // --- Elementos del Formulario del Modal ---
+        const selectSede = document.getElementById("sede");
+        const selectAnioModal = document.getElementById("selectAnioModal");
+        const selectElement = document.getElementById('select-carreras');
+        const selectMaterias = document.getElementById('select-asignatura');
+
+        // --- Elementos a ocultar/mostrar según el modo ---
+        const grupoSede = document.getElementById('grupo-sede');
+        const grupoAnioModal = document.getElementById('grupo-anio-modal');
+        const grupoCarrera = document.getElementById('grupo-carrera');
+        const grupoAsignatura = document.getElementById('grupo-asignatura');
+        const cardDatosDocente = document.getElementById('card-datos-docente');
+        const cardTablaDocentesModal = document.getElementById('card-tabla-docentes-modal');
+
+            // --- NUEVA FUNCIÓN: Limpia el modal y lo prepara para el modo CREACIÓN ---
+    function limpiarYPrepararModal() {
+        inpTernaId.value = '0';
+        inpFechaInicio.value = '';
+        inpFechaCulmina.value = '';
+        selectSede.selectedIndex = 0;
+        selectAnioModal.value = new Date().getFullYear();
+
+        document.getElementById('cedulaDocente').value = '';
+        document.getElementById('nombreDocente').value = '';
+        document.getElementById('facultadDocente').value = '';
+        document.getElementById('experienciaDocente').value = '';
+
+        if (typeof customCarreras !== 'undefined') customCarreras.clear();
+        if (typeof customSelectMaterias !== 'undefined') customSelectMaterias.clear();
+
+        document.querySelector("#tablaDocentesModal tbody").innerHTML = "";
+
+        [grupoSede, grupoAnioModal, grupoCarrera, grupoAsignatura, cardDatosDocente, cardTablaDocentesModal].forEach(el => el.style.display = '');
+    }
+
+    const customSelectFiltroFacultad = new CustomSelect(selectFiltroFacultad, {
+        ajax: async function (query) {
+            if (!query || query.length < 2) {
+                return [];
+            }
+            try {
+                const response = await fetch(`/api/facultad?search=${encodeURIComponent(query)}`);
+                if (!response.ok) throw new Error(`Error en la respuesta: ${response.statusText}`);
+                const data = await response.json();
+                return data.map(item => ({
+                    id: item.codFacultad,
+                    text: item.facultad
+                }));
+            } catch (error) {
+                console.error('Error cargando opciones de facultades:', error);
+                return [];
+            }
+        },
+        minimumInputLength: 2
+    });
+
+    const customSelectFiltroCarrera = new CustomSelect(selectFiltroCarrera, {
+        ajax: async function (query) {
+            if (!query || query.length < 2) {
+                return [];
+            }
+            try {
+                const response = await fetch(`/api/carrera?search=${encodeURIComponent(query)}`);
+                if (!response.ok) throw new Error(`Error en la respuesta: ${response.statusText}`);
+                const data = await response.json();
+                return data.map(item => ({
+                    id: item.codCarrera,
+                    text: `${item.codCarrera} - ${item.carrera} - ${item.planCarrera} - ${item.acuerdo}`
+                }));
+            } catch (error) {
+                console.error('Error cargando opciones de carreras:', error);
+                return [];
+            }
+        },
+        minimumInputLength: 2
+    });
 
     const customSelectMaterias = new CustomSelect(selectMaterias, {
         ajax: async function (query) {

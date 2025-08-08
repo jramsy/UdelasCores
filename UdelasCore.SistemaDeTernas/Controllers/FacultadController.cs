@@ -34,5 +34,26 @@ namespace UdelasCore.SistemaDeTernas.Controllers
             }
         }
 
+        [HttpGet("api/facultades/{search}")]
+        public async Task<IActionResult> Index(string search)
+        {
+            try
+            {
+                var facultades = await _facultadService.GetFacultadesAsync();
+
+                if (facultades == null || !facultades.Any())
+                {
+                    return NotFound("No se encontraron facultades.");
+                }
+
+                return Ok(facultades.Where(f => f.Facultad.ToLower().Contains(search.ToLower()) || f.CodFacultad.ToString().ToLower().Contains(search)).ToList());
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, $"Ocurrió un error al procesar la solicitud: {ex.Message}");
+            }
+        }
+
     }
 }

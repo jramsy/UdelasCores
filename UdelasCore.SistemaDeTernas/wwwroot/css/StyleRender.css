@@ -6,6 +6,12 @@
         display: initial;
     }
 
+.contenedor-iconos-horizontales {
+    display: flex; /* Alinea los elementos en línea */
+    gap: 10px; /* Añade espacio entre los iconos (ejemplo) */
+    align-items: center; /* Centra verticalmente los iconos */
+}
+
 /*Estilos de los div*/
 .fila {
     display: flex;

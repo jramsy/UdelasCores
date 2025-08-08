@@ -1,0 +1,5 @@
+C:\Users\dabustaman\Desktop\UdelasCores\UdelasCore.Shared.Resources\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\dabustaman\Desktop\UdelasCores\UdelasCore.Shared.Resources\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\dabustaman\Desktop\UdelasCores\UdelasCore.Shared.Resources\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\dabustaman\Desktop\UdelasCores\UdelasCore.Shared.Resources\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\dabustaman\Desktop\UdelasCores\UdelasCore.Shared.Recursos\obj\Debug\net8.0\staticwebassets.build.json

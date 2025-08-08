@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdelasCore.Negocio", "Class
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdelasCore.SistemaDeTernas", "UdelasCore.SistemaDeTernas\UdelasCore.SistemaDeTernas.csproj", "{8D458127-663B-4449-BDEB-C42F93F29DBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdelasCore.Shared.Recursos", "UdelasCore.Shared.Recursos\UdelasCore.Shared.Recursos.csproj", "{C211B6FD-64A2-4313-9173-AC82181FF5A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8D458127-663B-4449-BDEB-C42F93F29DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D458127-663B-4449-BDEB-C42F93F29DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D458127-663B-4449-BDEB-C42F93F29DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C211B6FD-64A2-4313-9173-AC82181FF5A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C211B6FD-64A2-4313-9173-AC82181FF5A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C211B6FD-64A2-4313-9173-AC82181FF5A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C211B6FD-64A2-4313-9173-AC82181FF5A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

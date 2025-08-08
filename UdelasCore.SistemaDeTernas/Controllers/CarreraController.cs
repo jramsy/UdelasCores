@@ -25,7 +25,7 @@ namespace UdelasCore.SistemaDeTernas.Controllers
                 return NotFound(new { message = "No se encontraron carreras." });
             }
 
-            return Ok(carreras.Where(c => c.Carrera.ToLower().Contains(search.ToLower())).ToList());
+            return Ok(carreras.Where(c => c.Carrera.ToLower().Contains(search.ToLower()) || c.CodCarrera.ToString().ToLower().Contains(search)).ToList());
         }
 
         [HttpGet("{id}")]
